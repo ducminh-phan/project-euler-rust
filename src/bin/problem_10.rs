@@ -2,9 +2,9 @@
 //!
 //! Find the sum of all the primes below two million.
 
-use lib::primes::primes;
+use lib::primes::{PrimeSet, Primes};
 
 fn main() {
-    let result: u64 = primes().take_while(|p| *p < 2_000_000).sum();
+    let result: u64 = Primes::new().iter().take_while(|p| *p < 2_000_000).sum();
     println!("{}", result)
 }

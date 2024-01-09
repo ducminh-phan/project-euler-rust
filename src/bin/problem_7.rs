@@ -3,9 +3,9 @@
 //!
 //! What is the 10001st prime number?
 
-use lib::primes::primes;
+use lib::primes::{PrimeSet, Primes};
 
 fn main() {
-    let prime = primes().take(10001).last().unwrap();
+    let prime = Primes::new().iter().take(10001).last().unwrap();
     println!("{}", prime);
 }
