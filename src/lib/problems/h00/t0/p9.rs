@@ -53,7 +53,7 @@ impl Iterator for PythagoreanTriples {
     }
 }
 
-fn main() {
+pub fn main() {
     let mut triples = PythagoreanTriples::new(1000);
     let (a, b, c) = triples.find(|(a, b, c)| a + b + c == 1000).unwrap();
     println!("{}", a * b * c)

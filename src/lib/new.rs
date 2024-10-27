@@ -13,12 +13,12 @@ pub fn new(id: u32) -> Result<(), Box<dyn Error>> {
     let tens = (id % 100) / 10;
     let ones = id % 10;
 
-    let path = path!(
-        "./src/lib/problems"
-            / format!("p{hundreds:02}")
-            / format!("p{tens}")
-            / format!("p{ones}.rs")
-    );
+    let h_mod = format!("h{hundreds:02}");
+    let t_mod = format!("t{tens}");
+    let p_mod = format!("p{ones}");
+
+    let path =
+        path!("./src/lib/problems" / h_mod / t_mod / format!("{p_mod}.rs"));
     let path = path.as_path();
 
     if path.exists() {
@@ -35,26 +35,19 @@ pub fn new(id: u32) -> Result<(), Box<dyn Error>> {
         .create(true)
         .append(true)
         .open(path)?
-        .write(format!("fn main() {{}}\n").as_bytes())?;
+        .write_all("pub fn solve() {}\n".as_bytes())?;
 
-    let tens_mod_path = path!(
-        "./src/lib/problems"
-            / format!("p{hundreds:02}")
-            / format!("p{tens}")
-            / format!("mod.rs")
-    );
+    let tens_mod_path = path!("./src/lib/problems" / h_mod / t_mod / "mod.rs");
     info!("Writing to file: {tens_mod_path:?}");
-    add_to_mod(&tens_mod_path, &format!("p{ones}"));
+    add_to_mod(&tens_mod_path, &p_mod);
 
-    let hundreds_mod_path = path!(
-        "./src/lib/problems" / format!("p{hundreds:02}") / format!("mod.rs")
-    );
+    let hundreds_mod_path = path!("./src/lib/problems" / h_mod / "mod.rs");
     info!("Writing to file: {hundreds_mod_path:?}");
-    add_to_mod(&hundreds_mod_path, &format!("p{tens}"));
+    add_to_mod(&hundreds_mod_path, &t_mod);
 
-    let problems_mod_path = path!("./src/lib/problems" / format!("mod.rs"));
+    let problems_mod_path = path!("./src/lib/problems/mod.rs");
     info!("Writing to file: {problems_mod_path:?}");
-    add_to_mod(&problems_mod_path, &format!("p{hundreds:02}"));
+    add_to_mod(&problems_mod_path, &h_mod);
 
     Ok(())
 }
@@ -67,15 +60,15 @@ fn add_to_mod(mod_file_path: &Path, name: &str) {
         .open(mod_file_path)
         .unwrap();
 
-    let line = format!("pub mod {name};");
+    let line = format!("mod {name};");
 
     if std::io::BufReader::new(&file)
         .lines()
-        .flatten()
+        .map_while(Result::ok)
         .filter(|_line| (*_line) == line)
         .count()
         == 0
     {
-        writeln!(file, "{}", format!("{line}")).unwrap();
+        writeln!(file, "{}", line).unwrap();
     }
 }

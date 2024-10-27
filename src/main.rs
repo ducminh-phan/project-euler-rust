@@ -16,6 +16,11 @@ enum Commands {
         #[arg(required = true)]
         id: u32,
     },
+
+    Solve {
+        #[arg(required = true)]
+        id: u32,
+    },
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -32,6 +37,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     match cli.command {
         Some(Commands::New { id }) => lib::new::new(id)?,
+
+        Some(Commands::Solve { id }) => lib::problems::solve(id),
 
         _ => {}
     }
