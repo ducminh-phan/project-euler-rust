@@ -23,7 +23,8 @@ fn main() {
 
     for a in 2..(limit - 1) {
         for b in (a + 1)..limit {
-            if sum_of_proper_divisors(a) == b && sum_of_proper_divisors(b) == a {
+            if sum_of_proper_divisors(a) == b && sum_of_proper_divisors(b) == a
+            {
                 sum += a + b
             }
         }
