@@ -4,7 +4,7 @@
 
 use crate::primes::{PrimeSet, Primes};
 
-fn main() {
+pub fn main() {
     let result: u64 = Primes::new().iter().take_while(|p| *p < 2_000_000).sum();
     println!("{}", result)
 }

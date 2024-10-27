@@ -50,7 +50,11 @@ fn num_to_text(num: u32) -> String {
         let rem = num % 10;
         let tens = num - rem;
 
-        return format!("{}-{}", map.get(&tens).unwrap(), map.get(&rem).unwrap());
+        return format!(
+            "{}-{}",
+            map.get(&tens).unwrap(),
+            map.get(&rem).unwrap()
+        );
     }
 
     if num <= 999 {
@@ -69,7 +73,7 @@ fn num_to_text(num: u32) -> String {
     unreachable!()
 }
 
-fn main() {
+pub fn main() {
     let result: usize = (1..=1000)
         .map(num_to_text)
         .map(|s| s.replace([' ', '-'], ""))

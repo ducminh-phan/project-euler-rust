@@ -33,7 +33,7 @@ fn count_days_of_month(year: u32, month: u32) -> u32 {
     }
 }
 
-fn main() {
+pub fn main() {
     let mut count = 0;
 
     // 1 Jan 1900 was a Monday
@@ -41,7 +41,10 @@ fn main() {
 
     for year in 0..=100 {
         for month in 0..12 {
-            if first_of_month_weekday == 6 && year >= 1 && (year < 100 || month < 11) {
+            if first_of_month_weekday == 6
+                && year >= 1
+                && (year < 100 || month < 11)
+            {
                 count += 1;
             }
 

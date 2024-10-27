@@ -30,7 +30,7 @@ const NUM_STRING: &str = "\
 
 const WINDOW_SIZE: usize = 13;
 
-fn main() {
+pub fn main() {
     let result: u64 = NUM_STRING
         .chars()
         .map(|c| c.to_digit(10).unwrap() as u64)

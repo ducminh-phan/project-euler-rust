@@ -9,7 +9,7 @@ fn is_palindrome(x: &u32) -> bool {
     return x.to_string().chars().rev().eq(x.to_string().chars());
 }
 
-fn main() {
+pub fn main() {
     let n = 3;
     let result = (10u32.pow(n - 1)..(10u32.pow(n) - 1))
         .combinations_with_replacement(2)

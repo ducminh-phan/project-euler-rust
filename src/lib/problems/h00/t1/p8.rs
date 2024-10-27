@@ -11,7 +11,7 @@
 //!
 //! Find the maximum total from top to bottom of the triangle below.
 
-fn main() {
+pub fn main() {
     #[allow(clippy::zero_prefixed_literal)]
     let triangle = vec![
         vec![75],
