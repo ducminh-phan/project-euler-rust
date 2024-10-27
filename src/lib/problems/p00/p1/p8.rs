@@ -1,6 +1,6 @@
 //! By starting at the top of the triangle below and moving to adjacent numbers
 //! on the row below, the maximum total from top to bottom is 23.
-//! ```
+//! ```text
 //!  [3]
 //!  [7] 4
 //!  2   [4] 6
@@ -43,12 +43,16 @@ fn main() {
 
             // Up-left element exists
             if col_idx > 0 {
-                candidates.push(triangle_value + max_by_elements[row_idx - 1][col_idx - 1])
+                candidates.push(
+                    triangle_value + max_by_elements[row_idx - 1][col_idx - 1],
+                )
             }
 
             // Up element exists
             if col_idx < row_idx {
-                candidates.push(triangle_value + max_by_elements[row_idx - 1][col_idx])
+                candidates.push(
+                    triangle_value + max_by_elements[row_idx - 1][col_idx],
+                )
             }
 
             let current_max = candidates.iter().max().unwrap();

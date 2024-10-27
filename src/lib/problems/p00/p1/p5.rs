@@ -6,7 +6,7 @@
 //!
 //! In fact, the number of routes in an `a * b` grid is the number of ways
 //! to choose `b` turns right in `a + b` turns. So the formula is
-//! ```
+//! ```text
 //! aC(a+b) = (a + b)! / (a! * b!)
 //! ```
 

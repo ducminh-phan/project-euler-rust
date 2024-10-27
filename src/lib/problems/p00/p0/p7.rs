@@ -3,7 +3,7 @@
 //!
 //! What is the 10001st prime number?
 
-use lib::primes::{PrimeSet, Primes};
+use crate::primes::{PrimeSet, Primes};
 
 fn main() {
     let prime = Primes::new().iter().take(10001).last().unwrap();
