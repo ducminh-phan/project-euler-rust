@@ -35,11 +35,22 @@ pub fn factor_once(n: u64) -> Factors {
     factor(n, &mut Primes::new())
 }
 
+pub fn divisors(n: u64) -> Vec<u64> {
+    let mut divisors = vec![];
+
+    for i in 1..=(n / 2) {
+        if n % i == 0 {
+            divisors.push(i);
+        }
+    }
+
+    divisors
+}
+
 #[cfg(test)]
 mod tests {
-    use crate::primes::Primes;
-
     use super::*;
+    use crate::primes::Primes;
 
     #[test]
     fn test_factor() {
@@ -53,5 +64,14 @@ mod tests {
         assert_eq!(factor(36, &mut primes), vec![(2, 2), (3, 2)]);
         assert_eq!(factor(36, &mut primes), vec![(2, 2), (3, 2)]);
         assert_eq!(factor_once(36), vec![(2, 2), (3, 2)]);
+    }
+
+    #[test]
+    fn test_divisors() {
+        assert_eq!(divisors(2), vec![1]);
+        assert_eq!(divisors(4), vec![1, 2]);
+        assert_eq!(divisors(12), vec![1, 2, 3, 4, 6]);
+        assert_eq!(divisors(27), vec![1, 3, 9]);
+        assert_eq!(divisors(42), vec![1, 2, 3, 6, 7, 14, 21]);
     }
 }
