@@ -107,7 +107,7 @@ const NUMBERS: [&str; 100] = [
 
 const SIZE: usize = 50;
 
-pub fn main() {
+pub fn solve() {
     let digits_list: Vec<Vec<u32>> = NUMBERS
         .iter()
         .map(|s| {

@@ -12,7 +12,7 @@
 
 const SIZE: usize = 21;
 
-pub fn main() {
+pub fn solve() {
     let mut grid = [[0u64; SIZE]; SIZE];
     for i in 0..SIZE {
         grid[i][0] = 1;

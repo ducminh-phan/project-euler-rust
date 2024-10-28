@@ -2,15 +2,15 @@ use std::collections::HashMap;
 
 pub fn get_map() -> HashMap<u32, fn()> {
     HashMap::from([
-        (1, p0001::main as fn()),
-        (2, p0002::main),
-        (3, p0003::main),
-        (4, p0004::main),
-        (5, p0005::main),
-        (6, p0006::main),
-        (7, p0007::main),
-        (8, p0008::main),
-        (9, p0009::main),
+        (1, p0001::solve as fn()),
+        (2, p0002::solve),
+        (3, p0003::solve),
+        (4, p0004::solve),
+        (5, p0005::solve),
+        (6, p0006::solve),
+        (7, p0007::solve),
+        (8, p0008::solve),
+        (9, p0009::solve),
     ])
 }
 

@@ -27,7 +27,7 @@ fn prime_factors(n: u64) -> Vec<u64> {
     _prime_factors(n, 2)
 }
 
-pub fn main() {
+pub fn solve() {
     let n = 600851475143;
     let factors = prime_factors(n);
 

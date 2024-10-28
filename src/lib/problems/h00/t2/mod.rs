@@ -2,12 +2,12 @@ use std::collections::HashMap;
 
 pub fn get_map() -> HashMap<u32, fn()> {
     HashMap::from([
-        (0, p0020::main as fn()),
-        (1, p0021::main),
-        (2, p0022::main),
-        (3, p0023::main),
-        (4, p0024::main),
-        (5, p0025::main),
+        (0, p0020::solve as fn()),
+        (1, p0021::solve),
+        (2, p0022::solve),
+        (3, p0023::solve),
+        (4, p0024::solve),
+        (5, p0025::solve),
     ])
 }
 
