@@ -36,9 +36,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     let cli = Cli::parse();
 
     match cli.command {
-        Some(Commands::New { id }) => lib::new::new(id)?,
+        Some(Commands::New { id }) => lib::template::new(id)?,
 
-        Some(Commands::Solve { id }) => lib::problems::solve(id),
+        Some(Commands::Solve { id }) => lib::solve(id),
 
         _ => {}
     }
