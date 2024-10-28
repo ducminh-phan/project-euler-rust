@@ -1,19 +1,10 @@
-use std::collections::HashMap;
+use crate::declare_problems;
 
-pub fn get_map() -> HashMap<u32, fn()> {
-    HashMap::from([
-        (0, p0020::solve as fn()),
-        (1, p0021::solve),
-        (2, p0022::solve),
-        (3, p0023::solve),
-        (4, p0024::solve),
-        (5, p0025::solve),
-    ])
+declare_problems! {
+    p0020,
+    p0021,
+    p0022,
+    p0023,
+    p0024,
+    p0025,
 }
-
-mod p0020;
-mod p0021;
-mod p0022;
-mod p0023;
-mod p0024;
-mod p0025;
