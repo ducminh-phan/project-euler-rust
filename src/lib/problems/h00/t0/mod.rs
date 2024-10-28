@@ -2,24 +2,24 @@ use std::collections::HashMap;
 
 pub fn get_map() -> HashMap<u32, fn()> {
     HashMap::from([
-        (1, p1::main as fn()),
-        (2, p2::main),
-        (3, p3::main),
-        (4, p4::main),
-        (5, p5::main),
-        (6, p6::main),
-        (7, p7::main),
-        (8, p8::main),
-        (9, p9::main),
+        (1, p0001::main as fn()),
+        (2, p0002::main),
+        (3, p0003::main),
+        (4, p0004::main),
+        (5, p0005::main),
+        (6, p0006::main),
+        (7, p0007::main),
+        (8, p0008::main),
+        (9, p0009::main),
     ])
 }
 
-mod p1;
-mod p2;
-mod p3;
-mod p4;
-mod p5;
-mod p6;
-mod p7;
-mod p8;
-mod p9;
+mod p0001;
+mod p0002;
+mod p0003;
+mod p0004;
+mod p0005;
+mod p0006;
+mod p0007;
+mod p0008;
+mod p0009;
