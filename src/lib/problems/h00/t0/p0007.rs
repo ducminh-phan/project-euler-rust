@@ -5,7 +5,7 @@
 
 use crate::primes::{PrimeSet, Primes};
 
-pub fn main() {
+pub fn solve() {
     let prime = Primes::new().iter().take(10001).last().unwrap();
     println!("{}", prime);
 }

@@ -11,11 +11,10 @@ pub fn new(id: u32) -> Result<(), Box<dyn Error>> {
 
     let hundreds = id / 100;
     let tens = (id % 100) / 10;
-    let ones = id % 10;
 
     let h_mod = format!("h{hundreds:02}");
     let t_mod = format!("t{tens}");
-    let p_mod = format!("p{ones}");
+    let p_mod = format!("p{id:04}");
 
     let path =
         path!("./src/lib/problems" / h_mod / t_mod / format!("{p_mod}.rs"));

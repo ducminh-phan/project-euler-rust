@@ -35,7 +35,7 @@ fn find_collatz_sequence_length(n: u64) -> u64 {
     count
 }
 
-pub fn main() {
+pub fn solve() {
     let result = (1..(1e6 as u64))
         .map(|n| (n, find_collatz_sequence_length(n)))
         .max_by_key(|(_, len)| *len)

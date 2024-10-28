@@ -26,7 +26,7 @@ use itertools::Itertools;
 use crate::numbers::factor;
 use crate::primes::Primes;
 
-pub fn main() {
+pub fn solve() {
     let mut primes = Primes::new();
 
     let result: (u64, usize) = (1..)

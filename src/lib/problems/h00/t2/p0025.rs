@@ -12,7 +12,7 @@
 //! What is the index of the first term in the Fibonacci sequence to contain
 //! 1000 digits?
 
-pub fn main() {
+pub fn solve() {
     // F(n) ≈ phi^n / sqrt(5)
     // F(n) has 1000 digits => F(n) > 10^999 => phi^n > sqrt(5) * 10^999
     // => n > log(sqrt(5), base=phi) / log(phi) + 999 * log(10, base=phi)

@@ -8,7 +8,7 @@ use log::debug;
 const SIZE: usize = 1000;
 type Digits = [u32; SIZE];
 
-pub fn main() {
+pub fn solve() {
     let mut digits: Digits = [0; SIZE];
     digits[0] = 1;
     for _ in 0..1000 {

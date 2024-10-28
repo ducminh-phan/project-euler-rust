@@ -6,7 +6,7 @@
 
 use num::Integer;
 
-pub fn main() {
+pub fn solve() {
     let result: u32 = (1..20).fold(1, |p, n| p.lcm(&n));
 
     println!("{}", result);

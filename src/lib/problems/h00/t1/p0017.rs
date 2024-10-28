@@ -73,7 +73,7 @@ fn num_to_text(num: u32) -> String {
     unreachable!()
 }
 
-pub fn main() {
+pub fn solve() {
     let result: usize = (1..=1000)
         .map(num_to_text)
         .map(|s| s.replace([' ', '-'], ""))

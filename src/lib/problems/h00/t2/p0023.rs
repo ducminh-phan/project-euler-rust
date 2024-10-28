@@ -23,7 +23,7 @@ use crate::numbers::divisors;
 
 const MAX: u64 = 28124;
 
-pub fn main() {
+pub fn solve() {
     // Find all abundant numbers between 12 and 28124.
     // Then find all numbers that can be written as the sum of these abundant
     // numbers. From that we can find the answer.

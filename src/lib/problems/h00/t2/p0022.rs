@@ -14,7 +14,7 @@ use std::io::Read;
 
 use itertools::Itertools;
 
-pub fn main() {
+pub fn solve() {
     let file = OpenOptions::new()
         .read(true)
         .open("assets/0022_names.txt")

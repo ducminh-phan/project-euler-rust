@@ -17,7 +17,7 @@ fn sum_of_proper_divisors(n: u32) -> u32 {
     (1..=n / 2).filter(|d| n % d == 0).sum()
 }
 
-pub fn main() {
+pub fn solve() {
     let limit = 10000;
     let mut sum = 0;
 

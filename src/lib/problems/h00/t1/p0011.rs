@@ -77,7 +77,7 @@ fn slices<'a>(size: usize) -> impl Iterator<Item = Vec<&'a u32>> {
         .chain(backward_diagonal(size))
 }
 
-pub fn main() {
+pub fn solve() {
     let result: u32 = slices(4)
         .map(|s| s.iter().copied().product())
         .max()
