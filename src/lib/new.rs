@@ -6,18 +6,16 @@ use std::path::Path;
 use log::{info, warn};
 use path_macro::path;
 
+use crate::problems::ModuleStructure;
+
 pub fn new(id: u32) -> Result<(), Box<dyn Error>> {
     info!("New ID: {}", id);
 
-    let hundreds = id / 100;
-    let tens = (id % 100) / 10;
+    let ms = ModuleStructure::new(id);
 
-    let h_mod = format!("h{hundreds:02}");
-    let t_mod = format!("t{tens}");
-    let p_mod = format!("p{id:04}");
-
-    let path =
-        path!("./src/lib/problems" / h_mod / t_mod / format!("{p_mod}.rs"));
+    let path = path!(
+        "./src/lib/problems" / ms.h_mod / ms.t_mod / format!("{}.rs", ms.p_mod)
+    );
     let path = path.as_path();
 
     if path.exists() {
@@ -36,17 +34,18 @@ pub fn new(id: u32) -> Result<(), Box<dyn Error>> {
         .open(path)?
         .write_all("pub fn solve() {}\n".as_bytes())?;
 
-    let tens_mod_path = path!("./src/lib/problems" / h_mod / t_mod / "mod.rs");
+    let tens_mod_path =
+        path!("./src/lib/problems" / ms.h_mod / ms.t_mod / "mod.rs");
     info!("Writing to file: {tens_mod_path:?}");
-    add_to_mod(&tens_mod_path, &p_mod);
+    add_to_mod(&tens_mod_path, &ms.p_mod);
 
-    let hundreds_mod_path = path!("./src/lib/problems" / h_mod / "mod.rs");
+    let hundreds_mod_path = path!("./src/lib/problems" / ms.h_mod / "mod.rs");
     info!("Writing to file: {hundreds_mod_path:?}");
-    add_to_mod(&hundreds_mod_path, &t_mod);
+    add_to_mod(&hundreds_mod_path, &ms.t_mod);
 
     let problems_mod_path = path!("./src/lib/problems/mod.rs");
     info!("Writing to file: {problems_mod_path:?}");
-    add_to_mod(&problems_mod_path, &h_mod);
+    add_to_mod(&problems_mod_path, &ms.h_mod);
 
     Ok(())
 }
