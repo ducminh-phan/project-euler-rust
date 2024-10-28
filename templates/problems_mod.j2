@@ -1,5 +1,7 @@
 use crate::declare_h_collections;
 
 declare_h_collections! {
-    h00,
+{%- for h_mod in h_mods %}
+    {{ h_mod }},
+{%- endfor %}
 }

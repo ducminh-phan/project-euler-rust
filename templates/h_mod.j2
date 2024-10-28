@@ -1,0 +1,7 @@
+use crate::declare_t_collections;
+
+declare_t_collections! {
+{%- for t_mod in t_mods %}
+    {{ t_mod }},
+{%- endfor %}
+}
