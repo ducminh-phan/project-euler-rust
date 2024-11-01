@@ -15,4 +15,5 @@ itertools = "0.13.0"
 log = "0.4.22"
 minijinja = { version = "2.4.0", features = ["loader"] }
 num = "0.4.1"
+num-bigint = "0.4.6"
 path_macro = "1.0.0"

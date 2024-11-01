@@ -2,34 +2,11 @@
 //!
 //! What is the sum of the digits of the number `2**1000`?
 
-use itertools::Itertools;
-use log::debug;
-
-const SIZE: usize = 1000;
-type Digits = [u32; SIZE];
+use num_bigint::BigUint;
 
 pub fn solve() {
-    let mut digits: Digits = [0; SIZE];
-    digits[0] = 1;
-    for _ in 0..1000 {
-        mul(&mut digits, 2);
-        debug_digits(&digits);
-    }
+    let n = num::pow(BigUint::from(2u8), 1000);
+    let r = n.to_radix_le(10).iter().map(|d| *d as u32).sum::<u32>();
 
-    println!("{}", digits.iter().sum::<u32>());
-}
-
-fn mul(digits: &mut Digits, n: u32) {
-    let mut carry = 0;
-    for d in digits.iter_mut() {
-        let tmp = n * (*d) + carry;
-        *d = tmp % 10;
-        carry = tmp / 10;
-    }
-}
-
-fn debug_digits(digits: &Digits) {
-    let ds = digits.iter().rev().skip_while(|d| **d == 0).join("");
-
-    debug!("{}", ds);
+    println!("{r}");
 }
