@@ -45,7 +45,7 @@ fn vertical<'a>(size: usize) -> impl Iterator<Item = Vec<&'a u32>> {
 
     iproduct!(0..=upper, 0..GRID_SIZE).map(move |(row, col)| {
         (0..size)
-            .map(|i| GRID.iter().nth(GRID_SIZE * (row + i) + col).unwrap())
+            .map(|i| GRID.get(GRID_SIZE * (row + i) + col).unwrap())
             .collect()
     })
 }
@@ -55,7 +55,7 @@ fn forward_diagonal<'a>(size: usize) -> impl Iterator<Item = Vec<&'a u32>> {
 
     iproduct!(0..=upper, 0..=upper).map(move |(row, col)| {
         (0..size)
-            .map(|i| GRID.iter().nth(GRID_SIZE * (row + i) + col + i).unwrap())
+            .map(|i| GRID.get(GRID_SIZE * (row + i) + col + i).unwrap())
             .collect()
     })
 }
@@ -65,7 +65,7 @@ fn backward_diagonal<'a>(size: usize) -> impl Iterator<Item = Vec<&'a u32>> {
 
     iproduct!(0..upper, (size - 1)..GRID_SIZE).map(move |(row, col)| {
         (0..size)
-            .map(|i| GRID.iter().nth(GRID_SIZE * (row + i) + col - i).unwrap())
+            .map(|i| GRID.get(GRID_SIZE * (row + i) + col - i).unwrap())
             .collect()
     })
 }
