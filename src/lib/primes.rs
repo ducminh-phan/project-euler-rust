@@ -1,3 +1,5 @@
+use cached::proc_macro::cached;
+
 pub trait PrimeSet: Sized {
     /// Finds one more prime, and adds it to the list
     fn expand(&mut self);
@@ -47,7 +49,7 @@ impl PrimeSet for Primes {
             let is_prime = self
                 .items
                 .iter()
-                .take_while(|p| p <= &&max_p)
+                .take_while(|p| **p <= max_p)
                 .all(|p| self.next % p != 0);
 
             if is_prime {
@@ -81,5 +83,40 @@ impl<'a, P: PrimeSet> Iterator for PrimeSetIterator<'a, P> {
         let m = self.primes.list()[self.n - 1];
 
         Some(m)
+    }
+}
+
+#[cached]
+pub fn is_prime(p: u64) -> bool {
+    if p < 10 {
+        return [2, 3, 5, 7].contains(&p);
+    }
+
+    if p % 2 == 0 || p % 3 == 0 {
+        return false;
+    }
+
+    let sqrt = (p as f64).sqrt().ceil() as u64;
+    (1..)
+        .take_while(|k| 6 * k - 1 <= sqrt)
+        .all(|k| (p % (6 * k + 1) != 0) && (p % (6 * k - 1) != 0))
+}
+
+#[cfg(test)]
+mod tests {
+    use std::collections::HashSet;
+    use std::sync::LazyLock;
+
+    use super::*;
+
+    const MAX: u64 = 1000;
+
+    static PRIMES: LazyLock<HashSet<u64>> = LazyLock::new(|| {
+        Primes::new().iter().take_while(|p| *p < MAX).collect()
+    });
+
+    #[test]
+    fn test_is_prime() {
+        assert!((0..MAX).all(|n| is_prime(n) == PRIMES.contains(&n)));
     }
 }

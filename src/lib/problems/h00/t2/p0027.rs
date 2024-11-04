@@ -16,24 +16,12 @@
 //! expression that produces the maximum number of primes for consecutive values
 //! of `n`, starting with `n = 0`.</p>
 
-use std::collections::HashSet;
-use std::sync::LazyLock;
-
 use itertools::iproduct;
 
-use crate::primes::{PrimeSet, Primes};
+use crate::primes::is_prime;
 
 const MAX_A: i64 = 999;
 const MAX_B: i64 = 1000;
-
-// n^2 + an + b is a composite number when n = b. Therefore, we only need to
-// store the list of primes upto 2_001_000
-static PRIMES: LazyLock<HashSet<u64>> = LazyLock::new(|| {
-    Primes::new()
-        .iter()
-        .take_while(|p| *p < 2_001_000)
-        .collect::<HashSet<_>>()
-});
 
 pub fn solve() {
     fn eval(n: u64, a: i64, b: i64) -> i64 {
@@ -47,7 +35,7 @@ pub fn solve() {
         (0..=max_n)
             .find(|n| {
                 let c = eval(*n, a, b);
-                c <= 0 || !PRIMES.contains(&(c as u64))
+                c <= 0 || !is_prime(c as u64)
             })
             .unwrap_or(0)
     }
