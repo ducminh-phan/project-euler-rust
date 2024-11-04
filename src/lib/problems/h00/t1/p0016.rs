@@ -2,7 +2,7 @@
 //!
 //! What is the sum of the digits of the number `2**1000`?
 
-use num_bigint::BigUint;
+use num::BigUint;
 
 pub fn solve() {
     let n = num::pow(BigUint::from(2u8), 1000);

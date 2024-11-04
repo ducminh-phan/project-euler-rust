@@ -5,7 +5,7 @@
 //!
 //! Find the sum of the digits in the number `100!`.
 
-use num_bigint::BigUint;
+use num::BigUint;
 
 pub fn solve() {
     let mut p = BigUint::from(1u8);
