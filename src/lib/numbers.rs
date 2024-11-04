@@ -47,6 +47,13 @@ pub fn divisors(n: u64) -> Vec<u64> {
     divisors
 }
 
+pub fn digits<N>(n: N) -> Vec<u8>
+where
+    num::BigUint: From<N>,
+{
+    num::BigUint::from(n).to_radix_le(10)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
