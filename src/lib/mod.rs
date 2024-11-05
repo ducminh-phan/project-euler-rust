@@ -2,6 +2,7 @@ pub mod numbers;
 pub mod primes;
 pub mod problems;
 pub mod template;
+pub mod utils;
 
 use template::ModuleStructure;
 

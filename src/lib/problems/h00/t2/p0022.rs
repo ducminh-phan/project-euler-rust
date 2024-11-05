@@ -9,33 +9,17 @@
 //!
 //! What is the total of all the name scores in the file?
 
-use std::fs::OpenOptions;
-use std::io::Read;
-
 use itertools::Itertools;
 
+use crate::utils::{read_file, word_score};
+
 pub fn solve() {
-    let file = OpenOptions::new()
-        .read(true)
-        .open("assets/0022_names.txt")
-        .unwrap();
-
-    let mut content = String::new();
-    std::io::BufReader::new(file)
-        .read_to_string(&mut content)
-        .unwrap();
-
-    let result: u32 = content
-        .split(',')
-        .map(|s| s.replace('"', ""))
+    let result: u32 = read_file("assets/0022_names.txt")
+        .iter()
         .sorted()
         .enumerate()
-        .map(|(i, s)| (i as u32 + 1u32) * score(&s))
+        .map(|(i, s)| (i as u32 + 1u32) * word_score(s))
         .sum();
 
     println!("{}", result);
-}
-
-fn score(s: &String) -> u32 {
-    s.as_bytes().iter().map(|c| (c - 65 + 1) as u32).sum()
 }
