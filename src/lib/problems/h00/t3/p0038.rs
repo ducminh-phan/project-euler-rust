@@ -19,6 +19,7 @@
 use itertools::Itertools;
 
 use crate::numbers::digits;
+use crate::utils::num_from_digits;
 
 pub fn solve() {
     // There are 4 cases of k * (1...n):
@@ -34,7 +35,7 @@ pub fn solve() {
     println!("{}", r);
 }
 
-fn find_pandigital_product(k: u32) -> Option<u32> {
+fn find_pandigital_product(k: u32) -> Option<u64> {
     let mut all_digits: Vec<u8> = vec![];
     for n in 1..=5 {
         all_digits.extend(digits(k * n).iter().rev());
@@ -51,10 +52,5 @@ fn find_pandigital_product(k: u32) -> Option<u32> {
         return None;
     }
 
-    let product = all_digits
-        .iter()
-        .enumerate()
-        .map(|(i, d)| (*d as u32) * 10u32.pow((8 - i) as u32))
-        .sum::<u32>();
-    Some(product)
+    Some(num_from_digits(all_digits))
 }

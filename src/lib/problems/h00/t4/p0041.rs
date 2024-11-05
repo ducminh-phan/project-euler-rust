@@ -7,23 +7,18 @@
 use itertools::Itertools;
 
 use crate::primes::is_prime;
+use crate::utils::num_from_digits;
 
 pub fn solve() {
     // There is no 5-, 6-, 8- or 9-digit pandigital primes, as they are always
     // divisible by 3. We iterate over permutations of 1..7, then 1..4 in
     // reverse order to find the first prime.
 
-    let r = [7u32, 4]
+    let r = [7u8, 4]
         .into_iter()
         .flat_map(|n| (1..=n).rev().permutations(n as usize))
-        .map(|ds| {
-            let n = ds.len();
-            ds.iter()
-                .enumerate()
-                .map(|(i, d)| d * 10u32.pow((n - i - 1) as u32))
-                .sum::<u32>()
-        })
-        .find(|&d| is_prime(d as u64))
+        .map(num_from_digits)
+        .find(|&d| is_prime(d))
         .unwrap();
 
     println!("{}", r)
