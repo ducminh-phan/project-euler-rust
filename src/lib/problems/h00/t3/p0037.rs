@@ -46,6 +46,6 @@ fn is_left_truncatable_prime(p: u64) -> bool {
         return false;
     }
 
-    let n_digits = (p as f64).log10().ceil() as u32;
+    let n_digits = (p as f64).log10().floor() as u32 + 1;
     (1..n_digits).all(|n| is_prime(p % 10u64.pow(n)))
 }

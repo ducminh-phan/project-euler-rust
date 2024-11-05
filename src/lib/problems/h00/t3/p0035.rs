@@ -32,7 +32,7 @@ pub fn solve() {
 }
 
 fn generate_rotations(p: u64) -> Vec<u64> {
-    let n_digits = (p as f64).log10().ceil() as u32;
+    let n_digits = (p as f64).log10().floor() as u32 + 1;
 
     (0..n_digits)
         .map(|q| {
