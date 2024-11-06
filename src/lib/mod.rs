@@ -1,8 +1,9 @@
-pub mod numbers;
-pub mod primes;
-pub mod problems;
 pub mod template;
-pub mod utils;
+
+pub(crate) mod numbers;
+pub(crate) mod primes;
+pub(crate) mod problems;
+pub(crate) mod utils;
 
 use template::ModuleStructure;
 

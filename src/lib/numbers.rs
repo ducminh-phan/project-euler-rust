@@ -31,10 +31,6 @@ pub fn factor(n: u64, primes: &mut Primes) -> Factors {
     factors
 }
 
-pub fn factor_once(n: u64) -> Factors {
-    factor(n, &mut Primes::new())
-}
-
 pub fn divisors(n: u64) -> Vec<u64> {
     let mut divisors = vec![];
 
