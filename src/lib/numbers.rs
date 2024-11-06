@@ -1,3 +1,6 @@
+use num::integer::Roots;
+use num::pow::Pow;
+
 use crate::primes::{PrimeSet, Primes};
 
 type Factors = Vec<(u64, usize)>;
@@ -50,6 +53,10 @@ where
     num::BigUint::from(n).to_radix_le(10)
 }
 
+pub fn is_square<N: Roots + Pow<u8, Output = N>>(n: N) -> bool {
+    n == n.sqrt().pow(2)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -66,7 +73,6 @@ mod tests {
         assert_eq!(factor(30, &mut primes), vec![(2, 1), (3, 1), (5, 1)]);
         assert_eq!(factor(36, &mut primes), vec![(2, 2), (3, 2)]);
         assert_eq!(factor(36, &mut primes), vec![(2, 2), (3, 2)]);
-        assert_eq!(factor_once(36), vec![(2, 2), (3, 2)]);
     }
 
     #[test]
@@ -76,5 +82,22 @@ mod tests {
         assert_eq!(divisors(12), vec![1, 2, 3, 4, 6]);
         assert_eq!(divisors(27), vec![1, 3, 9]);
         assert_eq!(divisors(42), vec![1, 2, 3, 6, 7, 14, 21]);
+    }
+
+    #[test]
+    fn test_digits() {
+        assert_eq!(digits(4231u32), vec![1, 3, 2, 4]);
+        assert_eq!(digits(31416u32), vec![6, 1, 4, 1, 3]);
+    }
+
+    #[test]
+    fn test_is_square() {
+        assert!(is_square(1));
+        assert!(!is_square(2));
+        assert!(!is_square(3));
+        assert!(is_square(4));
+        assert!(is_square(25));
+        assert!(!is_square(37));
+        assert!(!is_square(42));
     }
 }

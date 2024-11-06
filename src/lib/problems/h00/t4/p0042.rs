@@ -18,8 +18,7 @@
 //! Using assets/0042_words.txt, a 16K text file containing nearly two-thousand
 //! common English words, how many are triangle words?
 
-use num::integer::Roots;
-
+use crate::numbers::is_square;
 use crate::utils::{read_file, word_score};
 
 pub fn solve() {
@@ -39,8 +38,4 @@ fn is_triangle_number(n: u32) -> bool {
     // <=> delta = 1 + 8n is a perfect square
 
     is_square(8 * n + 1)
-}
-
-fn is_square(n: u32) -> bool {
-    n == n.sqrt().pow(2)
 }
