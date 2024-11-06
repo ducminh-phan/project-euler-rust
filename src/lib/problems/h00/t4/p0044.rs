@@ -12,9 +12,7 @@
 //! and difference are pentagonal and `D = |P_k - P_j|` is minimised; what is
 //! the value of `D`?
 
-use num::integer::Roots;
-
-use crate::numbers::is_square;
+use crate::numbers::is_pentagonal_number;
 
 pub fn solve() {
     // We iterate d = 0, 1,..., then find j such that P(j) + P(d) is a
@@ -42,9 +40,4 @@ pub fn solve() {
             }
         }
     }
-}
-
-fn is_pentagonal_number(n: u64) -> bool {
-    let s = 24 * n + 1;
-    is_square(s) && (1 + s.sqrt()) % 6 == 0
 }

@@ -57,6 +57,15 @@ pub fn is_square<N: Roots + Pow<u8, Output = N>>(n: N) -> bool {
     n == n.sqrt().pow(2)
 }
 
+pub fn is_triangle_number(n: u64) -> bool {
+    is_square(8 * n + 1)
+}
+
+pub fn is_pentagonal_number(n: u64) -> bool {
+    let s = 24 * n + 1;
+    is_square(s) && (1 + s.sqrt()) % 6 == 0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
