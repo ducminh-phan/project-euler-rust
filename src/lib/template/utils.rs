@@ -1,4 +1,6 @@
 pub struct ModuleStructure {
+    pub id: u32,
+
     pub hundreds: u32,
     pub tens: u32,
 
@@ -17,6 +19,7 @@ impl ModuleStructure {
         let p_mod = format!("p{id:04}");
 
         Self {
+            id,
             hundreds,
             tens,
             h_mod,

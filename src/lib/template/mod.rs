@@ -52,15 +52,31 @@ fn write_p_mod(
     }
 
     let dir = path.parent().unwrap();
-    info!("Creating directory: {dir:?}");
+    debug!("Creating directory: {dir:?}");
     std::fs::create_dir_all(dir)?;
+
+    // Fetch description and format as module docs
+    let description = reqwest::blocking::get(format!(
+        "https://projecteuler.net/minimal={}",
+        ms.id,
+    ))?
+    .text()?
+    .replace("<p>", "\n")
+    .replace("</p>", "\n")
+    .replace("\n\n\n", "\n\n")
+    .replace("$", "`")
+    .trim()
+    .lines()
+    .map(html_escape::decode_html_entities)
+    .map(|line| format!("//! {line}"))
+    .join("\n");
 
     write_file(
         path,
         j2_env
             .get_template("p_mod.j2")
             .unwrap()
-            .render(j2::context! {})
+            .render(j2::context! {description => description})
             .unwrap()
             .as_bytes(),
     )?;
