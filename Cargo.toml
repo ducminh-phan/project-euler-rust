@@ -8,10 +8,10 @@ name = "lib"
 path = "src/lib/mod.rs"
 
 [dependencies]
-cached = "0.53.1"
+cached = "0.54.0"
 clap = { version = "4.5.20", features = ["derive"] }
 env_logger = "0.11.5"
-html-escape = "0.2.13"
+html2md = "0.2.14"
 itertools = "0.13.0"
 log = "0.4.22"
 minijinja = { version = "2.4.0", features = ["loader"] }

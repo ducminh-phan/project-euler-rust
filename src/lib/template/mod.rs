@@ -4,6 +4,7 @@ use std::fs::OpenOptions;
 use std::io::Write;
 use std::path::{Path, PathBuf};
 
+use html2md::parse_html;
 use itertools::Itertools;
 use log::{debug, info, warn};
 use minijinja as j2;
@@ -56,20 +57,18 @@ fn write_p_mod(
     std::fs::create_dir_all(dir)?;
 
     // Fetch description and format as module docs
-    let description = reqwest::blocking::get(format!(
+    let description_html = &reqwest::blocking::get(format!(
         "https://projecteuler.net/minimal={}",
         ms.id,
     ))?
-    .text()?
-    .replace("<p>", "\n")
-    .replace("</p>", "\n")
-    .replace("\n\n\n", "\n\n")
-    .replace("$", "`")
-    .trim()
-    .lines()
-    .map(html_escape::decode_html_entities)
-    .map(|line| format!("//! {line}"))
-    .join("\n");
+    .text()?;
+
+    let description = parse_html(description_html)
+        .replace("$", "`")
+        .trim()
+        .lines()
+        .map(|line| format!("//! {line}"))
+        .join("\n");
 
     write_file(
         path,
