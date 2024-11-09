@@ -1,7 +1,7 @@
 use std::fs::OpenOptions;
 use std::io::Read;
 
-pub fn read_file<P: AsRef<str>>(path: P) -> Vec<String> {
+pub fn read_file<P: AsRef<str>>(path: P, split_by: char) -> Vec<String> {
     let file = OpenOptions::new().read(true).open(path.as_ref()).unwrap();
 
     let mut content = String::new();
@@ -9,7 +9,10 @@ pub fn read_file<P: AsRef<str>>(path: P) -> Vec<String> {
         .read_to_string(&mut content)
         .unwrap();
 
-    content.split(',').map(|s| s.replace('"', "")).collect()
+    content
+        .split(split_by)
+        .map(|s| s.replace('"', ""))
+        .collect()
 }
 
 pub fn word_score<S: AsRef<str>>(s: S) -> u32 {

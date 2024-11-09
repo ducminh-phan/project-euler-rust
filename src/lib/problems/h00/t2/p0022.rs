@@ -14,7 +14,7 @@ use itertools::Itertools;
 use crate::utils::{read_file, word_score};
 
 pub fn solve() {
-    let result: u32 = read_file("assets/0022_names.txt")
+    let result: u32 = read_file("assets/0022_names.txt", ',')
         .iter()
         .sorted()
         .enumerate()

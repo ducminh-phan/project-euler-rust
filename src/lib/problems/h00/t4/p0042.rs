@@ -22,7 +22,7 @@ use crate::numbers::is_triangle_number;
 use crate::utils::{read_file, word_score};
 
 pub fn solve() {
-    let r = read_file("assets/0042_words.txt")
+    let r = read_file("assets/0042_words.txt", ',')
         .iter()
         .map(word_score)
         .filter(|s| is_triangle_number(*s as u64))
