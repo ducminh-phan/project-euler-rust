@@ -66,6 +66,10 @@ pub fn is_pentagonal_number(n: u64) -> bool {
     is_square(s) && (1 + s.sqrt()) % 6 == 0
 }
 
+pub fn is_palindrome<N: ToString>(x: &N) -> bool {
+    x.to_string().chars().rev().eq(x.to_string().chars())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
