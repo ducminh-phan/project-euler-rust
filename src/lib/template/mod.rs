@@ -16,13 +16,13 @@ mod utils;
 
 const BASE_PROBLEMS_MOD_PATH: &str = "./src/lib/problems";
 
-pub fn new(id: u32) -> Result<(), Box<dyn Error>> {
+pub fn new(id: u32, overwrite: bool) -> Result<(), Box<dyn Error>> {
     info!("New ID: {}", id);
 
     let ms = ModuleStructure::new(id);
     let j2_env = create_env();
 
-    write_p_mod(&j2_env, &ms)?;
+    write_p_mod(&j2_env, &ms, overwrite)?;
     rebuild_modules(&j2_env)?;
 
     Ok(())
@@ -38,6 +38,7 @@ fn create_env() -> j2::Environment<'static> {
 fn write_p_mod(
     j2_env: &j2::Environment,
     ms: &ModuleStructure,
+    overwrite: bool,
 ) -> Result<(), Box<dyn Error>> {
     let path = path!(
         BASE_PROBLEMS_MOD_PATH
@@ -48,8 +49,12 @@ fn write_p_mod(
     let path = path.as_path();
 
     if path.exists() {
-        warn!("File {path:?} already exists, skip writing!");
-        return Ok(());
+        if !overwrite {
+            warn!("File {path:?} already exists, skip writing!");
+            return Ok(());
+        }
+
+        warn!("Overwriting file {path:?}");
     }
 
     let dir = path.parent().unwrap();

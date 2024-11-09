@@ -15,6 +15,13 @@ enum Commands {
     New {
         #[arg(required = true)]
         id: u32,
+
+        #[arg(
+            long,
+            default_value_t = false,
+            help = "Overwrite existing module file"
+        )]
+        overwrite: bool,
     },
 
     Solve {
@@ -36,7 +43,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     let cli = Cli::parse();
 
     match cli.command {
-        Some(Commands::New { id }) => lib::template::new(id)?,
+        Some(Commands::New { id, overwrite }) => {
+            lib::template::new(id, overwrite)?
+        }
 
         Some(Commands::Solve { id }) => lib::solve(id),
 
