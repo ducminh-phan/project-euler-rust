@@ -53,6 +53,13 @@ where
     num::BigUint::from(n).to_radix_le(10)
 }
 
+pub fn n_digits<N>(n: N) -> u32
+where
+    num::BigUint: From<N>,
+{
+    digits(n).len() as u32
+}
+
 pub fn is_square<N: Roots + Pow<u8, Output = N>>(n: N) -> bool {
     n == n.sqrt().pow(2)
 }

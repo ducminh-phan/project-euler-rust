@@ -10,6 +10,7 @@
 
 use std::collections::VecDeque;
 
+use crate::numbers::n_digits;
 use crate::primes::is_prime;
 
 pub fn solve() {
@@ -46,6 +47,6 @@ fn is_left_truncatable_prime(p: u64) -> bool {
         return false;
     }
 
-    let n_digits = (p as f64).log10().floor() as u32 + 1;
+    let n_digits = n_digits(p);
     (1..n_digits).all(|n| is_prime(p % 10u64.pow(n)))
 }

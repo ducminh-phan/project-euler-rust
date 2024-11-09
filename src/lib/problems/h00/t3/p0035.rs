@@ -12,6 +12,7 @@
 use std::collections::HashSet;
 use std::sync::LazyLock;
 
+use crate::numbers::n_digits;
 use crate::primes::{PrimeSet, Primes};
 
 // Store the list of primes upto 1 million
@@ -32,7 +33,7 @@ pub fn solve() {
 }
 
 fn generate_rotations(p: u64) -> Vec<u64> {
-    let n_digits = (p as f64).log10().floor() as u32 + 1;
+    let n_digits = n_digits(p);
 
     (0..n_digits)
         .map(|q| {

@@ -10,6 +10,8 @@
 //! d_1 * d_10 * d_100 * d_1000 * d_10000 * d_100000 * d_1000000
 //! ```
 
+use crate::numbers::n_digits;
+
 struct Digits {
     number: u32,
     index: u32,
@@ -32,7 +34,7 @@ impl Iterator for Digits {
 
         if self.index == 0 {
             self.number += 1;
-            self.index = (self.number as f64).log10().floor() as u32
+            self.index = n_digits(self.number as u64)
         } else {
             self.index -= 1;
         }
