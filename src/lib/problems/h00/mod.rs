@@ -7,4 +7,5 @@ declare_t_collections! {
     t3,
     t4,
     t5,
+    t6,
 }

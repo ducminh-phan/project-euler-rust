@@ -102,6 +102,16 @@ pub fn is_prime(p: u64) -> bool {
         .all(|k| (p % (6 * k + 1) != 0) && (p % (6 * k - 1) != 0))
 }
 
+#[cached(convert = "{n}", key = "u64")]
+pub fn is_prime_fast(n: u64, primes: &mut Primes) -> bool {
+    if n < 10 {
+        return [2, 3, 5, 7].contains(&n);
+    }
+
+    let sqrt = (n as f64).sqrt().ceil() as u64;
+    primes.iter().take_while(|p| *p <= sqrt).all(|p| n % p != 0)
+}
+
 #[cfg(test)]
 mod tests {
     use std::collections::HashSet;
@@ -118,5 +128,12 @@ mod tests {
     #[test]
     fn test_is_prime() {
         assert!((0..MAX).all(|n| is_prime(n) == PRIMES.contains(&n)));
+    }
+
+    #[test]
+    fn test_is_prime_fast() {
+        let mut primes = Primes::new();
+        assert!((0..MAX)
+            .all(|n| is_prime_fast(n, &mut primes) == PRIMES.contains(&n)));
     }
 }
