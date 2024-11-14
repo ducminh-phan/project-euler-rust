@@ -1,3 +1,4 @@
+use std::env;
 use std::fs::OpenOptions;
 use std::io::Read;
 
@@ -31,6 +32,16 @@ pub fn num_from_digits<DS: AsRef<[u8]>>(digits: DS) -> u64 {
         .enumerate()
         .map(|(i, d)| (*d as u64) * 10u64.pow((n - i - 1) as u32))
         .sum::<u64>()
+}
+
+pub fn parse_env<T: std::str::FromStr>(name: &str, default: T) -> T
+where
+    <T as std::str::FromStr>::Err: std::fmt::Debug,
+{
+    env::var(name)
+        .map(|s| s.parse())
+        .map(|v| v.unwrap())
+        .unwrap_or(default)
 }
 
 #[cfg(test)]

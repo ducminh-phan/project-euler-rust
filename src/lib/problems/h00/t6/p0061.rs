@@ -27,7 +27,6 @@
 //! heptagonal, and octagonal, is represented by a different number in the set.
 
 use std::collections::HashMap;
-use std::env;
 
 use itertools::Itertools;
 
@@ -35,6 +34,7 @@ use crate::numbers::{
     is_heptagonal_number, is_hexagonal_number, is_octagonal_number,
     is_pentagonal_number, is_square, is_triangle_number,
 };
+use crate::utils::parse_env;
 
 const FUNCTIONS: [fn(u64) -> bool; 6] = [
     is_triangle_number,
@@ -46,10 +46,7 @@ const FUNCTIONS: [fn(u64) -> bool; 6] = [
 ];
 
 pub fn solve() {
-    let size: usize = env::var("SIZE")
-        .map(|s| s.parse())
-        .map(|v| v.unwrap())
-        .unwrap_or(6);
+    let size: usize = parse_env("SIZE", 6);
     let map = build_map(size);
 
     // Now we need to find a chain

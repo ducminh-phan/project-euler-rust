@@ -8,22 +8,16 @@
 //! concatenate to produce another prime.
 
 use std::collections::{HashMap, HashSet};
-use std::env;
 
 use itertools::Itertools;
 
 use crate::numbers::n_digits;
 use crate::primes::{is_prime_fast, PrimeSet, Primes};
+use crate::utils::parse_env;
 
 pub fn solve() {
-    let ceiling = env::var("CEILING")
-        .unwrap_or("10000".to_string())
-        .parse::<u64>()
-        .unwrap();
-    let set_size = env::var("SET_SIZE")
-        .unwrap_or("5".to_string())
-        .parse::<usize>()
-        .unwrap();
+    let ceiling = parse_env("CEILING", 10_000);
+    let set_size = parse_env("SET_SIZE", 5);
 
     let mut neighbors = HashMap::<u64, Vec<u64>>::new();
     let mut primes = Primes::new();
