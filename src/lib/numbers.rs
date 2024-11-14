@@ -60,6 +60,17 @@ where
     digits(n).len() as u32
 }
 
+pub fn sum_of_digits<N>(n: N) -> u32
+where
+    num::BigUint: From<N>,
+{
+    num::BigUint::from(n)
+        .to_radix_le(10)
+        .iter()
+        .map(|d| *d as u32)
+        .sum::<u32>()
+}
+
 pub fn is_square<N: Roots + Pow<u8, Output = N>>(n: N) -> bool {
     n == n.sqrt().pow(2)
 }

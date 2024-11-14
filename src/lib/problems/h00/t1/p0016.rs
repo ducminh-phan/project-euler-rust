@@ -4,9 +4,10 @@
 
 use num::BigUint;
 
+use crate::numbers::sum_of_digits;
+
 pub fn solve() {
     let n = num::pow(BigUint::from(2u8), 1000);
-    let r = n.to_radix_le(10).iter().map(|d| *d as u32).sum::<u32>();
-
-    println!("{r}");
+    let result = sum_of_digits(n);
+    println!("{result}");
 }

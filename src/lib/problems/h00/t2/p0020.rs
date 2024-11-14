@@ -7,13 +7,14 @@
 
 use num::BigUint;
 
+use crate::numbers::sum_of_digits;
+
 pub fn solve() {
     let mut p = BigUint::from(1u8);
     for n in 2..=100u8 {
         p *= BigUint::from(n);
     }
 
-    let r = p.to_radix_le(10).iter().map(|d| *d as u32).sum::<u32>();
-
-    println!("{r}");
+    let result = sum_of_digits(p);
+    println!("{result}");
 }

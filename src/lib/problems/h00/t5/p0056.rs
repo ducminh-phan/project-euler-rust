@@ -8,14 +8,13 @@
 use itertools::iproduct;
 use num::BigUint;
 
-use crate::numbers::digits;
+use crate::numbers::sum_of_digits;
 
 pub fn solve() {
     let limit = 100u32;
     let result = iproduct!(1..limit, 1..limit)
         .map(|(a, b)| BigUint::from(a).pow(b))
-        .map(digits)
-        .map(|ds| ds.iter().map(|d| *d as u32).sum::<u32>())
+        .map(sum_of_digits)
         .max()
         .unwrap();
     println!("{result}");
