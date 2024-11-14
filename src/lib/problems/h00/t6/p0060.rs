@@ -78,7 +78,7 @@ pub fn solve() {
                 dbg!(p1, p2, &subset);
 
                 let result = p1 + p2 + subset.into_iter().sum::<u64>();
-                dbg!(result);
+                println!("{result}");
 
                 return;
             }

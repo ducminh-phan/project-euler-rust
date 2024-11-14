@@ -37,6 +37,6 @@ pub fn solve() {
         .reduce(|(n_acc, d_acc), (n, d)| (n_acc * n, d_acc * d))
         .unwrap();
 
-    let r = d / gcd(n, d);
-    println!("{}", r)
+    let result = d / gcd(n, d);
+    println!("{result}");
 }

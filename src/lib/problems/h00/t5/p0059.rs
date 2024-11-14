@@ -57,7 +57,7 @@ pub fn solve() {
         .unwrap()
         .0;
 
-    dbg!(result);
+    println!("{result}");
 }
 
 fn compute_key_score(key: &[u8; 3]) -> (u64, u64) {

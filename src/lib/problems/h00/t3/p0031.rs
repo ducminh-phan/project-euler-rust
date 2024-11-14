@@ -37,6 +37,6 @@ pub fn solve() {
         }
     }
 
-    let r = dp[N_COINS][TARGET];
-    println!("{}", r);
+    let result = dp[N_COINS][TARGET];
+    println!("{result}");
 }

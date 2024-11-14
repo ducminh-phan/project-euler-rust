@@ -82,5 +82,5 @@ pub fn solve() {
         .map(|s| s.iter().copied().product())
         .max()
         .unwrap();
-    println!("{}", result)
+    println!("{result}");
 }

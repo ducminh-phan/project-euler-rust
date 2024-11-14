@@ -29,7 +29,7 @@ use crate::primes::Primes;
 pub fn solve() {
     let mut primes = Primes::new();
 
-    let result: (u64, usize) = (1..)
+    let (result, n_factors): (u64, usize) = (1..)
         .map(|n| n * (n + 1) / 2)
         .map(|n| (n, factor(n, &mut primes)))
         .map(|(n, factors)| {
@@ -39,5 +39,7 @@ pub fn solve() {
         .find(|(_, p)| *p > 500)
         .unwrap();
 
-    println!("{:?}", result)
+    dbg!(n_factors);
+
+    println!("{result}");
 }

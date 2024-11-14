@@ -31,7 +31,8 @@ pub fn solve() {
     let n = 600851475143;
     let factors = prime_factors(n);
 
-    println!("{:}", factors[0]);
+    let result = factors[0];
+    println!("{result}");
 }
 
 #[cfg(test)]

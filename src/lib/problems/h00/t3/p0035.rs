@@ -24,12 +24,12 @@ static PRIMES: LazyLock<HashSet<u64>> = LazyLock::new(|| {
 });
 
 pub fn solve() {
-    let r = PRIMES
+    let result = PRIMES
         .iter()
         .filter(|p| generate_rotations(**p).iter().all(|r| PRIMES.contains(r)))
         .count();
 
-    println!("{}", r);
+    println!("{result}");
 }
 
 fn generate_rotations(p: u64) -> Vec<u64> {

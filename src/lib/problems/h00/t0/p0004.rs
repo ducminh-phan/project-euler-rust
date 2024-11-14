@@ -17,5 +17,5 @@ pub fn solve() {
         .find_or_first(is_palindrome)
         .unwrap();
 
-    println!("{:?}", result);
+    println!("{result}");
 }

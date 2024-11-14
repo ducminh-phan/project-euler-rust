@@ -37,7 +37,7 @@ use crate::numbers::is_palindrome;
 pub fn solve() {
     let limit = 1e4 as u32;
     let result = (1..limit).filter(is_lychrel).count();
-    dbg!(result);
+    println!("{result}");
 }
 
 fn is_lychrel(n: &u32) -> bool {

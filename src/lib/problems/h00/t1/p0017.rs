@@ -80,7 +80,7 @@ pub fn solve() {
         .map(|s| s.len())
         .sum();
 
-    println!("{}", result)
+    println!("{result}");
 }
 
 #[cfg(test)]

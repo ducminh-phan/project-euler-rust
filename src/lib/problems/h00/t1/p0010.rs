@@ -6,5 +6,5 @@ use crate::primes::{PrimeSet, Primes};
 
 pub fn solve() {
     let result: u64 = Primes::new().iter().take_while(|p| *p < 2_000_000).sum();
-    println!("{}", result)
+    println!("{result}");
 }

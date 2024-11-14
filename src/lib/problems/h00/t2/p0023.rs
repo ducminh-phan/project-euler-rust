@@ -39,7 +39,7 @@ pub fn solve() {
             .unique()
             .collect::<Vec<_>>();
 
-    let r = (1..=MAX).sum::<u64>() - bad_numbers.into_iter().sum::<u64>();
+    let result = (1..=MAX).sum::<u64>() - bad_numbers.into_iter().sum::<u64>();
 
-    println!("{}", r);
+    println!("{result}");
 }

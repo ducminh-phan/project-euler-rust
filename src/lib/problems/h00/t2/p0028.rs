@@ -33,7 +33,7 @@ pub fn solve() {
     let n = 500;
 
     // Don't forget to add 1 at the center
-    let r = 2 * n * (8 * n * n + 15 * n + 13) / 3 + 1;
+    let result = 2 * n * (8 * n * n + 15 * n + 13) / 3 + 1;
 
-    println!("{}", r);
+    println!("{result}");
 }

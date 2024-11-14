@@ -19,6 +19,6 @@ pub fn solve() {
     let sqrt5 = 5f64.sqrt();
     let phi = (sqrt5 + 1.0) / 2.0;
 
-    let r = (sqrt5.log(phi) + 999.0 * 10.0f64.log(phi)).ceil() as u64;
-    println!("{}", r);
+    let result = (sqrt5.log(phi) + 999.0 * 10.0f64.log(phi)).ceil() as u64;
+    println!("{result}");
 }

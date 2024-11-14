@@ -36,8 +36,8 @@ pub fn solve() {
             .map(|(a, b)| a * b),
     );
 
-    let r: u32 = products.iter().sum();
-    println!("{}", r);
+    let result: u32 = products.iter().sum();
+    println!("{result}");
 }
 
 fn is_product_pandigital(a: u32, b: u32) -> bool {

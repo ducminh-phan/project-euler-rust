@@ -35,7 +35,7 @@ pub fn solve() {
         }
 
         if 4 * k + 1 > 10 * primes_count {
-            dbg!(n);
+            println!("{n}");
             return;
         }
     }

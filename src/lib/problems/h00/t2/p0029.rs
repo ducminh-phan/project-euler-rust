@@ -47,7 +47,7 @@ pub fn solve() {
         }
     }
 
-    let r = (MAX - 1).pow(2) - duplicates_count;
+    let result = (MAX - 1).pow(2) - duplicates_count;
 
-    println!("{}", r);
+    println!("{result}");
 }

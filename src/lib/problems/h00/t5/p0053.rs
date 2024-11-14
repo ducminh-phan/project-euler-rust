@@ -34,5 +34,5 @@ pub fn solve() {
         pascal_row = next_row;
     }
 
-    dbg!(result);
+    println!("{result}");
 }

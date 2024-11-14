@@ -53,7 +53,7 @@ pub fn solve() {
         .map(|(h1, h2)| (eval_hand(h1), eval_hand(h2)))
         .filter(|(s1, s2)| s1 > s2)
         .count();
-    dbg!(result);
+    println!("{result}");
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]

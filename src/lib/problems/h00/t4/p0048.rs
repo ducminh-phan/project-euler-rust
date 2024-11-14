@@ -6,7 +6,7 @@ use num::BigUint;
 
 pub fn solve() {
     let modulus = BigUint::from(10u32).pow(10);
-    let r = (1..=1000u32)
+    let result = (1..=1000u32)
         .map(|n| {
             let n = BigUint::from(n);
             n.modpow(&n, &modulus)
@@ -14,5 +14,5 @@ pub fn solve() {
         .sum::<BigUint>()
         % modulus;
 
-    println!("{}", r);
+    println!("{result}");
 }

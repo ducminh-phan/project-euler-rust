@@ -40,5 +40,5 @@ pub fn solve() {
         .max()
         .unwrap();
 
-    println!("{}", result);
+    println!("{result}");
 }

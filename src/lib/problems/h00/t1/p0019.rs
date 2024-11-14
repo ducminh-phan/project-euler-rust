@@ -34,7 +34,7 @@ fn count_days_of_month(year: u32, month: u32) -> u32 {
 }
 
 pub fn solve() {
-    let mut count = 0;
+    let mut result = 0;
 
     // 1 Jan 1900 was a Monday
     let mut first_of_month_weekday = 0;
@@ -45,7 +45,7 @@ pub fn solve() {
                 && year >= 1
                 && (year < 100 || month < 11)
             {
-                count += 1;
+                result += 1;
             }
 
             first_of_month_weekday += count_days_of_month(1900 + year, month);
@@ -53,7 +53,7 @@ pub fn solve() {
         }
     }
 
-    println!("{}", count)
+    println!("{result}");
 }
 
 #[cfg(test)]

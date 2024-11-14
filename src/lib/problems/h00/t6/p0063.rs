@@ -18,5 +18,5 @@ pub fn solve() {
         .map(|n| n - 1)
         .sum::<u32>();
 
-    dbg!(result);
+    println!("{result}");
 }

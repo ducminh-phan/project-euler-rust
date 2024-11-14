@@ -18,5 +18,5 @@ pub fn solve() {
         .map(|ds| ds.iter().map(|d| *d as u32).sum::<u32>())
         .max()
         .unwrap();
-    dbg!(result);
+    println!("{result}");
 }

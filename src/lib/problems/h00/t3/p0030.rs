@@ -31,8 +31,8 @@ pub fn solve() {
         .collect::<Vec<_>>();
     dbg!(&nums);
 
-    let r: u32 = nums.iter().sum();
-    println!("{}", r);
+    let result: u32 = nums.iter().sum();
+    println!("{result}");
 }
 
 fn sum_digit_powers(n: u32, p: u32) -> u32 {

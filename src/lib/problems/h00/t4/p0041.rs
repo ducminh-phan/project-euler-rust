@@ -14,12 +14,12 @@ pub fn solve() {
     // divisible by 3. We iterate over permutations of 1..7, then 1..4 in
     // reverse order to find the first prime.
 
-    let r = [7u8, 4]
+    let result = [7u8, 4]
         .into_iter()
         .flat_map(|n| (1..=n).rev().permutations(n as usize))
         .map(num_from_digits)
         .find(|&d| is_prime(d))
         .unwrap();
 
-    println!("{}", r)
+    println!("{result}");
 }

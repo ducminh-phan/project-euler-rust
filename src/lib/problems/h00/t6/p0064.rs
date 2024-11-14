@@ -51,7 +51,7 @@ pub fn solve() {
         .filter(|(_, cycle)| cycle.len() % 2 == 1)
         .count();
 
-    dbg!(result);
+    println!("{result}");
 }
 
 fn compute_continued_fractions(n: i64) -> (i64, Vec<i64>) {

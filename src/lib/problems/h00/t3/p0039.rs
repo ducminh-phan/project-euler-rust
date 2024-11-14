@@ -46,6 +46,6 @@ pub fn solve() {
         }
     }
 
-    let r = counter.iter().max_by_key(|(_, v)| *v).unwrap();
-    println!("{}", *r.0);
+    let (result, _) = counter.iter().max_by_key(|(_, v)| *v).unwrap();
+    println!("{result}");
 }

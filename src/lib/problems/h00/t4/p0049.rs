@@ -36,13 +36,13 @@ pub fn solve() {
         && v.len() >= 3
     }));
 
-    let r = map
+    let result = map
         .values()
         .flat_map(|v| find_arithmetic_subsequence(v))
         .map(|v| v.iter().join(""))
         .next()
         .unwrap();
-    println!("{}", r);
+    println!("{result}");
 }
 
 fn find_arithmetic_subsequence(nums: &[u64]) -> Option<[u64; 3]> {

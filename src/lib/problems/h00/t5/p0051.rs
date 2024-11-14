@@ -19,7 +19,7 @@ use crate::primes::{PrimeSet, Primes};
 
 pub fn solve() {
     let result = solve_with_n(8);
-    dbg!(result);
+    println!("{result}");
 }
 
 fn solve_with_n(n: usize) -> u64 {

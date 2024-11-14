@@ -119,7 +119,7 @@ pub fn solve() {
         dbg!(&numbers);
 
         let result = numbers.iter().sum::<u64>();
-        dbg!(result);
+        println!("{result}");
     } else {
         panic!("No solution found!");
     }

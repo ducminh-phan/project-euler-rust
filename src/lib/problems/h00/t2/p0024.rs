@@ -37,6 +37,6 @@ pub fn solve() {
         k -= 1;
     }
 
-    let r = permutation.iter().join("");
-    println!("{}", r);
+    let result = permutation.iter().join("");
+    println!("{result}");
 }

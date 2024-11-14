@@ -49,12 +49,12 @@ pub fn solve() {
         .collect::<Vec<usize>>();
     let max_index = indices.iter().max().unwrap();
 
-    let r = Digits::new()
+    let result = Digits::new()
         .enumerate()
         .take_while(|(i, _)| i <= max_index)
         .filter(|(i, _)| indices.contains(&(i + 1)))
         .map(|(_, d)| d as u32)
         .product::<u32>();
 
-    println!("{}", r);
+    println!("{result}");
 }

@@ -10,10 +10,10 @@
 use crate::numbers::digits;
 
 pub fn solve() {
-    let r = (1..1_000_000)
+    let result = (1..1_000_000)
         .filter(|n| is_palindromic_base_2(*n) && is_palindromic_base_10(*n))
         .sum::<u32>();
-    println!("{}", r);
+    println!("{result}");
 }
 
 fn is_palindromic_base_10(n: u32) -> bool {

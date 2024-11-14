@@ -33,5 +33,5 @@ pub fn solve() {
         }
     }
 
-    dbg!(result);
+    println!("{result}");
 }

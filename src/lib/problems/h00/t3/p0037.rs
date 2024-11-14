@@ -38,8 +38,8 @@ pub fn solve() {
 
     dbg!(&truncatable_primes);
 
-    let r = truncatable_primes.iter().sum::<u64>();
-    println!("{}", r);
+    let result = truncatable_primes.iter().sum::<u64>();
+    println!("{result}");
 }
 
 fn is_left_truncatable_prime(p: u64) -> bool {

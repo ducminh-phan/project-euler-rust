@@ -6,6 +6,6 @@
 use crate::primes::{PrimeSet, Primes};
 
 pub fn solve() {
-    let prime = Primes::new().iter().take(10001).last().unwrap();
-    println!("{}", prime);
+    let result = Primes::new().iter().take(10001).last().unwrap();
+    println!("{result}")
 }

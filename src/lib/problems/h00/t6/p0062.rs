@@ -24,7 +24,7 @@ pub fn solve() {
             dbg!(&numbers);
 
             let result = &numbers[0];
-            dbg!(result);
+            println!("{result}");
 
             return;
         }

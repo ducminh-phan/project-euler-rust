@@ -20,13 +20,13 @@ use itertools::Itertools;
 use crate::utils::num_from_digits;
 
 pub fn solve() {
-    let r = (0..=9u8)
+    let result = (0..=9u8)
         .permutations(10)
         .filter(is_good_permutation)
         .map(num_from_digits)
         .sum::<u64>();
 
-    println!("{}", r);
+    println!("{result}");
 }
 
 #[allow(clippy::ptr_arg)]

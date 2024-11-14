@@ -12,7 +12,7 @@ pub fn solve() {
     for i in 1u64.. {
         if (1..=6).map(|x| x * i).map(normalize).unique().count() == 1 {
             let result = i;
-            dbg!(result);
+            println!("{result}");
 
             return;
         }

@@ -31,8 +31,8 @@ pub fn solve() {
     // We will just iterate from 1 to 10000 (right-exclusive) and find possible
     // pandigital products
 
-    let r = (1..10_000).flat_map(find_pandigital_product).max().unwrap();
-    println!("{}", r);
+    let result = (1..10_000).flat_map(find_pandigital_product).max().unwrap();
+    println!("{result}");
 }
 
 fn find_pandigital_product(k: u32) -> Option<u64> {

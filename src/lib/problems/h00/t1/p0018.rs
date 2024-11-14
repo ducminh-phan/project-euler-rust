@@ -62,5 +62,5 @@ pub fn solve() {
     }
 
     let result = max_by_elements.last().unwrap().iter().max().unwrap();
-    println!("{}", result)
+    println!("{result}");
 }

@@ -21,5 +21,5 @@ pub fn solve() {
         .map(|(i, s)| (i as u32 + 1u32) * word_score(s))
         .sum();
 
-    println!("{}", result);
+    println!("{result}");
 }

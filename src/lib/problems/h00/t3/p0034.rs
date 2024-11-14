@@ -30,6 +30,6 @@ pub fn solve() {
         .collect::<Vec<_>>();
     dbg!(&nums);
 
-    let r = nums.iter().sum::<u32>();
-    println!("{}", r);
+    let result = nums.iter().sum::<u32>();
+    println!("{result}");
 }

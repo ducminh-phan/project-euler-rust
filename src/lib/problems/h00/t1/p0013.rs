@@ -142,5 +142,5 @@ pub fn solve() {
 
     let result = sum_digits.iter().rev().take(10).join("");
 
-    println!("{}", result)
+    println!("{result}");
 }
