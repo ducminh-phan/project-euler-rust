@@ -34,7 +34,7 @@ impl Iterator for Digits {
 
         if self.index == 0 {
             self.number += 1;
-            self.index = n_digits(self.number as u64)
+            self.index = n_digits(self.number as u64) - 1
         } else {
             self.index -= 1;
         }
