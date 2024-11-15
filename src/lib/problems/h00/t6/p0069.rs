@@ -19,29 +19,20 @@
 //!
 //! Find the value of `n <= 1,000,000` for which `n/Φ(n)` is a maximum.
 
+use crate::primes::{PrimeSet, Primes};
+
 pub fn solve() {
     let ceiling = 1e6 as u64;
-    let phi = compute_phi_to_n(ceiling);
-    let (result, q) = (1..=ceiling)
-        .map(|n| (n, (n as f64) / phi[n as usize] as f64))
-        .max_by(|(_, a), (_, b)| a.total_cmp(b))
+
+    let result = Primes::new()
+        .iter()
+        .scan(1u64, |acc, p| {
+            *acc *= p;
+            Some(*acc)
+        })
+        .take_while(|p| *p < ceiling)
+        .last()
         .unwrap();
 
-    dbg!(q);
-
     println!("{result}");
-}
-
-fn compute_phi_to_n(n: u64) -> Vec<u64> {
-    let mut phi: Vec<u64> = (0..=(n + 1)).collect();
-    for i in 2..=(n) {
-        let i_size = i as usize;
-        if phi[i_size] == i {
-            for j in (i..=n).step_by(i_size) {
-                phi[j as usize] -= phi[j as usize] / i;
-            }
-        }
-    }
-
-    phi
 }
