@@ -42,34 +42,15 @@
 //! Find the sum of digits in the numerator of the `100`th convergent of the
 //! continued fraction for `e`.
 
-use itertools::Itertools;
-use num::integer::gcd;
-use num::{BigUint, One};
-
+use crate::continued_fractions::Convergents;
 use crate::numbers::sum_of_digits;
 
 pub fn solve() {
-    // The 100th convergent is [2; 1, 2, 1,..., 1, 66, 1], we will compute
-    // backward, start with x1 = 1, then x2 = 66 + 1/x1, x3 = 1 + 1/x2,...
-    let (n, _) = [BigUint::from(2u8)]
-        .into_iter()
-        .chain((1u8..).flat_map(|k| {
-            [BigUint::one(), BigUint::from(2 * k), BigUint::one()]
-        }))
-        // Take 99 as we will fold the vector starting from 1
-        .take(99)
-        .collect_vec()
-        .into_iter()
-        .rev()
-        .fold((BigUint::one(), BigUint::one()), |(n, d), k| {
-            // Compute k + 1/x = k + d/n = (d + n*k)/n
-            let n_new = &d + &n * k;
-            let d_new = n.clone();
-            let g = gcd(n_new.clone(), d_new.clone());
+    let iter = Box::new((1u8..).flat_map(|k| [1, 2 * k, 1]));
+    let mut convergents = Convergents::from_iter(2u8, iter);
 
-            (n_new / &g, d_new / &g)
-        });
-
+    let (n, _) = convergents.nth(99).unwrap();
     let result = sum_of_digits(n);
+
     println!("{result}");
 }
