@@ -31,12 +31,16 @@
 //! How many chains, with a starting number below one million, contain exactly
 //! sixty non-repeating terms?
 
-use std::collections::HashSet;
+use std::sync::{LazyLock, Mutex};
 
 use crate::numbers::digits;
 
 const DIGIT_FACTORIALS: [u64; 10] =
     [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880];
+
+const CACHE_SIZE: usize = 1e6 as usize;
+static CHAIN_LENGTH_CACHE: LazyLock<Mutex<Vec<usize>>> =
+    LazyLock::new(|| Mutex::new(vec![0; CACHE_SIZE]));
 
 pub fn solve() {
     let ceiling = 1e6 as u64;
@@ -52,17 +56,52 @@ fn sum_of_digits_factorials(n: u64) -> u64 {
 }
 
 fn find_chain_length(mut n: u64) -> usize {
-    let mut visited = HashSet::new();
-    loop {
-        if visited.contains(&n) {
-            break;
+    {
+        let cache = CHAIN_LENGTH_CACHE.lock().unwrap();
+        if let Some(&cached) = cache.get(n as usize) {
+            if cached > 0 {
+                return cached;
+            }
         }
-
-        visited.insert(n);
-        n = sum_of_digits_factorials(n);
     }
 
-    visited.len()
+    let mut chain = vec![n];
+    loop {
+        n = sum_of_digits_factorials(n);
+
+        let mut cache = CHAIN_LENGTH_CACHE.lock().unwrap();
+        if let Some(&cached) = cache.get(n as usize) {
+            if cached > 0 {
+                // Now the chain is n0 -> n1 -> ... -> n(k+1) (cached)
+                // Add the cached size to the chain
+                let k = chain.len();
+                chain
+                    .iter()
+                    .enumerate()
+                    .filter(|(_, &n)| n < CACHE_SIZE as u64)
+                    .for_each(|(i, n)| cache[*n as usize] = cached + k - i);
+
+                return cached + k;
+            }
+        }
+
+        if let Some(x) = chain.iter().position(|&x| x == n) {
+            // Now we have the chain n0 -> n1 -> ... -> n(k+1) = n(x) for x <= k
+            // => The chain length for n0 is k, for n1 is k-1,...
+            //    And the chain length for n(x)...n(k) is k - x
+            let k = chain.len();
+            chain
+                .iter()
+                .enumerate()
+                .filter(|(_, &n)| n < CACHE_SIZE as u64)
+                .for_each(|(i, n)| {
+                    cache[*n as usize] = k - i.min(x);
+                });
+            return k;
+        }
+
+        chain.push(n);
+    }
 }
 
 #[cfg(test)]
@@ -78,6 +117,15 @@ mod tests {
     #[test]
     fn test_find_chain_length() {
         assert_eq!(find_chain_length(69), 5);
+        assert_eq!(find_chain_length(363600), 4);
+        assert_eq!(find_chain_length(1454), 3);
+        assert_eq!(find_chain_length(169), 3);
+        assert_eq!(find_chain_length(363601), 3);
+
         assert_eq!(find_chain_length(540), 2);
+        assert_eq!(find_chain_length(145), 1);
+
+        // sum_of_digits_factorials(999) will go over CACHE_SIZE
+        assert_eq!(find_chain_length(999), 47);
     }
 }
