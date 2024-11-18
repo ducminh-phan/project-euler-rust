@@ -12,7 +12,7 @@
 //! Find the value of `n`, `1 < n < 10^7`, for which `Φ(n)` is a permutation of
 //! `n` and the ratio `n/Φ(n)` produces a minimum.
 
-use crate::numbers::digits;
+use crate::numbers::{compute_phi_to_n, digits};
 
 pub fn solve() {
     let ceiling = 1e7 as u64;
@@ -26,20 +26,6 @@ pub fn solve() {
         .unwrap();
 
     println!("{result}");
-}
-
-fn compute_phi_to_n(n: u64) -> Vec<u64> {
-    let mut phi: Vec<u64> = (0..=(n + 1)).collect();
-    for i in 2..=(n) {
-        let i_size = i as usize;
-        if phi[i_size] == i {
-            for j in (i..=n).step_by(i_size) {
-                phi[j as usize] -= phi[j as usize] / i;
-            }
-        }
-    }
-
-    phi
 }
 
 fn signature(n: u64) -> [u8; 10] {

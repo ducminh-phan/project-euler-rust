@@ -103,6 +103,20 @@ pub fn is_palindrome<N: ToString>(x: &N) -> bool {
     x.to_string().chars().rev().eq(x.to_string().chars())
 }
 
+pub fn compute_phi_to_n(n: u64) -> Vec<u64> {
+    let mut phi: Vec<u64> = (0..=(n + 1)).collect();
+    for i in 2..=(n) {
+        let i_size = i as usize;
+        if phi[i_size] == i {
+            for j in (i..=n).step_by(i_size) {
+                phi[j as usize] -= phi[j as usize] / i;
+            }
+        }
+    }
+
+    phi
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
