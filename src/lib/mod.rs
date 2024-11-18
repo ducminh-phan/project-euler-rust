@@ -1,6 +1,7 @@
 pub mod template;
 
 pub(crate) mod continued_fractions;
+pub(crate) mod misc;
 pub(crate) mod numbers;
 pub(crate) mod primes;
 pub(crate) mod problems;
