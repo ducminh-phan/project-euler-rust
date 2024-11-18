@@ -19,14 +19,7 @@ use num::integer::gcd;
 pub fn solve() {
     let ceiling = 1e6 as u64;
     let (n, d) = (8..=ceiling)
-        .map(|d| {
-            let n = 3 * d / 7;
-            if 7 * n == 3 * d {
-                (n - 1, d)
-            } else {
-                (n, d)
-            }
-        })
+        .map(|d| ((3 * d - 1) / 7, d))
         .map(|(n, d)| {
             let g = gcd(n, d);
             (n / g, d / g)
