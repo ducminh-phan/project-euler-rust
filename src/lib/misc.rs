@@ -37,3 +37,26 @@ pub fn pythagorean_triplet_count_by_sum(ceiling: u64) -> HashMap<u64, u64> {
 
     counter
 }
+
+pub fn coins_sum(coins: Vec<usize>, target: usize) -> usize {
+    let n_coins = coins.len();
+    let mut dp = vec![vec![0; target + 1]; n_coins + 1];
+
+    // Represents the base case where the target sum is 0, and there is only
+    // one way to make change: by not selecting any coin
+    dp[0][0] = 1;
+
+    for i in 1..=n_coins {
+        for j in 0..=target {
+            // Add the number of ways to make change without using the current coin
+            dp[i][j] += dp[i - 1][j];
+
+            if j >= coins[i - 1] {
+                // Add the number of ways to make change using the current coin
+                dp[i][j] += dp[i][j - coins[i - 1]];
+            }
+        }
+    }
+
+    dp[n_coins][target]
+}
