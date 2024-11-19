@@ -38,7 +38,8 @@ pub fn pythagorean_triplet_count_by_sum(ceiling: u64) -> HashMap<u64, u64> {
     counter
 }
 
-pub fn coins_sum(coins: Vec<usize>, target: usize) -> usize {
+pub fn coins_sum<C: AsRef<Vec<usize>>>(coins: C, target: usize) -> usize {
+    let coins = coins.as_ref();
     let n_coins = coins.len();
     let mut dp = vec![vec![0; target + 1]; n_coins + 1];
 
