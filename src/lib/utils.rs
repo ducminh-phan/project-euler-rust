@@ -11,6 +11,7 @@ pub fn read_file<P: AsRef<str>>(path: P, split_by: char) -> Vec<String> {
         .unwrap();
 
     content
+        .trim()
         .split(split_by)
         .map(|s| s.replace('"', ""))
         .collect()

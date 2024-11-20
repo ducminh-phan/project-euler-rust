@@ -48,7 +48,6 @@ use crate::utils::read_file;
 pub fn solve() {
     let result = read_file("assets/0054_poker.txt", '\n')
         .iter()
-        .filter(|line| !line.is_empty())
         .map(|line| (parse_hand(&line[..14]), parse_hand(&line[15..])))
         .map(|(h1, h2)| (eval_hand(h1), eval_hand(h2)))
         .filter(|(s1, s2)| s1 > s2)
