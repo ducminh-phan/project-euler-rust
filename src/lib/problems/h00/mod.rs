@@ -9,4 +9,5 @@ declare_t_collections! {
     t5,
     t6,
     t7,
+    t8,
 }
