@@ -5,4 +5,5 @@ declare_problems! {
     p0081,
     p0082,
     p0083,
+    p0084,
 }

@@ -15,6 +15,7 @@ html2md = "0.2.14"
 itertools = "0.13.0"
 log = "0.4.22"
 minijinja = { version = "2.4.0", features = ["loader"] }
+nalgebra = "0.33.2"
 num = "0.4.1"
 path_macro = "1.0.0"
 reqwest = { version = "0.12.9", features = ["blocking"] }
