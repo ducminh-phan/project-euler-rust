@@ -29,7 +29,8 @@ use std::collections::HashSet;
 
 use itertools::Itertools;
 
-use crate::utils::{num_from_digits, read_file};
+use crate::numbers::num_from_digits;
+use crate::utils::read_file;
 
 pub fn solve() {
     let result = read_file("assets/0096_sudoku.txt", '\n')

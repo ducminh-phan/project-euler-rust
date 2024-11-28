@@ -117,6 +117,16 @@ pub fn compute_phi_to_n(n: u64) -> Vec<u64> {
     phi
 }
 
+pub fn num_from_digits<DS: AsRef<[u8]>>(digits: DS) -> u64 {
+    let digits = digits.as_ref();
+    let n = digits.len();
+    digits
+        .iter()
+        .enumerate()
+        .map(|(i, d)| (*d as u64) * 10u64.pow((n - i - 1) as u32))
+        .sum::<u64>()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

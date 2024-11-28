@@ -1,6 +1,7 @@
 // https://github.com/PSeitz/rust_measure_time/blob/7b1647c6461458a0ad03b3843195d6e97fd65f01/src/formatted_duration.rs
 
-use std::{fmt, time::Duration};
+use std::fmt;
+use std::time::Duration;
 
 /// A wrapper type that allows you to Display a Duration
 #[derive(Debug, Clone)]

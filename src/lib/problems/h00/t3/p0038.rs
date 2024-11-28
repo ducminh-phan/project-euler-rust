@@ -18,8 +18,7 @@
 
 use itertools::Itertools;
 
-use crate::numbers::digits;
-use crate::utils::num_from_digits;
+use crate::numbers::{digits, num_from_digits};
 
 pub fn solve() {
     // There are 4 cases of k * (1...n):

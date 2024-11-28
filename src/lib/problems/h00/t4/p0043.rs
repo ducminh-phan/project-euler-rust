@@ -17,7 +17,7 @@
 
 use itertools::Itertools;
 
-use crate::utils::num_from_digits;
+use crate::numbers::num_from_digits;
 
 pub fn solve() {
     let result = (0..=9u8)

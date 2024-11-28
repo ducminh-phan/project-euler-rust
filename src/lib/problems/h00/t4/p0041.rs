@@ -6,8 +6,8 @@
 
 use itertools::Itertools;
 
+use crate::numbers::num_from_digits;
 use crate::primes::is_prime;
-use crate::utils::num_from_digits;
 
 pub fn solve() {
     // There is no 5-, 6-, 8- or 9-digit pandigital primes, as they are always
