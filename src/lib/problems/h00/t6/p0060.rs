@@ -32,13 +32,11 @@ pub fn solve() {
                 continue;
             }
 
-            let p1_neighbors = HashSet::<u64>::from_iter(
-                neighbors
-                    .entry(*p1)
-                    .and_modify(|ns| ns.push(*p2))
-                    .or_insert(vec![*p2])
-                    .to_owned(),
-            );
+            let p1_neighbors = {
+                let _neighbors = neighbors.entry(*p1).or_default();
+                _neighbors.push(*p2);
+                HashSet::<u64>::from_iter(_neighbors.to_owned())
+            };
 
             let p2_neighbors = HashSet::<u64>::from_iter(
                 neighbors.entry(*p2).or_default().to_owned(),

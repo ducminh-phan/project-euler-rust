@@ -27,7 +27,7 @@ pub fn pythagorean_triplet_count_by_sum(ceiling: u64) -> HashMap<u64, u64> {
                 let p = 2 * k * m * (m + n);
 
                 if !visited.contains(&sides) && p <= ceiling {
-                    counter.entry(p).and_modify(|v| *v += 1).or_insert(1);
+                    *counter.entry(p).or_default() += 1;
                 }
 
                 visited.insert(sides);

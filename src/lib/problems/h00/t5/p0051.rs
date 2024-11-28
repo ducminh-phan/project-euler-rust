@@ -27,10 +27,8 @@ fn solve_with_n(n: usize) -> u64 {
     for p in Primes::new().iter() {
         let masks = generate_masks(p);
         for m in masks.into_iter() {
-            let ps = masks_map
-                .entry(m)
-                .and_modify(|v| v.push(p))
-                .or_insert(vec![p]);
+            let ps = masks_map.entry(m).or_default();
+            ps.push(p);
 
             if ps.len() == n {
                 return ps[0];

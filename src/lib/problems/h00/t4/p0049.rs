@@ -26,9 +26,7 @@ pub fn solve() {
         .take_while(|p| *p <= 10000)
     {
         let p_normalized = digits(p).into_iter().sorted().join("");
-        map.entry(p_normalized)
-            .and_modify(|v| v.push(p))
-            .or_insert(vec![p]);
+        map.entry(p_normalized).or_default().push(p);
     }
 
     let map = HashMap::<_, _>::from_iter(map.into_iter().filter(|(p, v)| {

@@ -11,14 +11,12 @@ use std::collections::HashMap;
 use crate::numbers::digits;
 
 pub fn solve() {
-    let mut map = HashMap::new();
+    let mut map = HashMap::<_, Vec<u64>>::new();
     for i in 1u64.. {
         let n = i.pow(3);
         let sig = signature(n);
-        let numbers = map
-            .entry(sig)
-            .and_modify(|v: &mut Vec<u64>| v.push(n))
-            .or_insert(vec![n]);
+        let numbers = map.entry(sig).or_default();
+        numbers.push(n);
 
         if numbers.len() == 5 {
             dbg!(&numbers);
