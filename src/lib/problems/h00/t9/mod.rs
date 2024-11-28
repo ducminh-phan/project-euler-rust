@@ -10,4 +10,5 @@ declare_problems! {
     p0096,
     p0097,
     p0098,
+    p0099,
 }
