@@ -29,7 +29,7 @@ use std::collections::HashSet;
 
 use itertools::Itertools;
 
-use crate::utils::read_file;
+use crate::utils::{num_from_digits, read_file};
 
 pub fn solve() {
     let result = read_file("assets/0096_sudoku.txt", '\n')
@@ -47,7 +47,7 @@ pub fn solve() {
         .map(|data| Sudoku(data.try_into().unwrap()))
         .map(|mut sudoku| {
             brute_solve(&mut sudoku);
-            sudoku.0[..3].iter().join("").parse::<u64>().unwrap()
+            num_from_digits(&sudoku.0[..3])
         })
         .sum::<u64>();
 
