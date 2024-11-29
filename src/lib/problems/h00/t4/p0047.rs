@@ -22,15 +22,16 @@ use itertools::Itertools;
 use crate::numbers::factor;
 use crate::primes::Primes;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut primes = Primes::new();
     let mut prime_factor_counts: [usize; 4] = [0; 4];
 
     for n in 2u64.. {
         prime_factor_counts[(n % 4) as usize] = factor(n, &mut primes).len();
         if prime_factor_counts.iter().all_equal_value() == Ok(&4) {
-            println!("{}", n - 3);
-            return;
+            return (n - 3).into();
         }
     }
+
+    panic!("No solution found!");
 }

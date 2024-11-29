@@ -16,8 +16,7 @@ use itertools::Itertools;
 
 use crate::misc::coins_sum;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let n = 100;
-    let result = coins_sum((1..n).collect_vec(), n);
-    println!("{result}");
+    coins_sum((1..n).collect_vec(), n).into()
 }

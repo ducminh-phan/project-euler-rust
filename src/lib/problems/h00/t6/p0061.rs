@@ -45,7 +45,7 @@ const FUNCTIONS: [fn(u64) -> bool; 6] = [
     is_octagonal_number,
 ];
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let size: usize = parse_env("SIZE", 6);
     let map = build_map(size);
 
@@ -118,8 +118,7 @@ pub fn solve() {
             .collect::<Vec<_>>();
         dbg!(&numbers);
 
-        let result = numbers.iter().sum::<u64>();
-        println!("{result}");
+        numbers.iter().sum::<u64>().into()
     } else {
         panic!("No solution found!");
     }

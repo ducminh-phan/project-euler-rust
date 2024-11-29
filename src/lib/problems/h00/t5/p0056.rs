@@ -10,12 +10,12 @@ use num::BigUint;
 
 use crate::numbers::sum_of_digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let limit = 100u32;
-    let result = iproduct!(1..limit, 1..limit)
+    iproduct!(1..limit, 1..limit)
         .map(|(a, b)| BigUint::from(a).pow(b))
         .map(sum_of_digits)
         .max()
-        .unwrap();
-    println!("{result}");
+        .unwrap()
+        .into()
 }

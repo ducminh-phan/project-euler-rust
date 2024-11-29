@@ -17,9 +17,8 @@ use itertools::Itertools;
 
 use crate::primes::{PrimeSet, Primes};
 
-pub fn solve() {
-    let result = solve_with_n(8);
-    println!("{result}");
+pub fn solve() -> crate::Answer {
+    solve_with_n(8).into()
 }
 
 fn solve_with_n(n: usize) -> u64 {

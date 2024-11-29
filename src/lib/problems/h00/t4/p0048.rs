@@ -4,7 +4,7 @@
 
 use num::BigUint;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let modulus = BigUint::from(10u32).pow(10);
     let result = (1..=1000u32)
         .map(|n| {
@@ -14,5 +14,5 @@ pub fn solve() {
         .sum::<BigUint>()
         % modulus;
 
-    println!("{result}");
+    result.into()
 }

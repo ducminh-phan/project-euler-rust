@@ -22,7 +22,7 @@
 
 use crate::primes::is_prime;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut primes_count = 0;
     for k in 1.. {
         let n = 2 * k + 1;
@@ -35,8 +35,9 @@ pub fn solve() {
         }
 
         if 4 * k + 1 > 10 * primes_count {
-            println!("{n}");
-            return;
+            return n.into();
         }
     }
+
+    panic!("No solution found!");
 }

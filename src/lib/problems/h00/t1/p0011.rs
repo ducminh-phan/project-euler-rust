@@ -77,10 +77,10 @@ fn slices<'a>(size: usize) -> impl Iterator<Item = Vec<&'a u32>> {
         .chain(backward_diagonal(size))
 }
 
-pub fn solve() {
-    let result: u32 = slices(4)
-        .map(|s| s.iter().copied().product())
+pub fn solve() -> crate::Answer {
+    slices(4)
+        .map(|s| s.iter().copied().product::<u32>())
         .max()
-        .unwrap();
-    println!("{result}");
+        .unwrap()
+        .into()
 }

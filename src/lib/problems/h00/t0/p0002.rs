@@ -1,7 +1,7 @@
 //! By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 //! find the sum of the even-valued terms.
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut a = 2u32;
     let mut b = 8u32;
     let mut sum = a;
@@ -13,5 +13,5 @@ pub fn solve() {
         (a, b) = (b, 4 * b + a);
     }
 
-    println!("{}", sum);
+    sum.into()
 }

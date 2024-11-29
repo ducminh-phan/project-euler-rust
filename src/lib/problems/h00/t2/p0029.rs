@@ -13,7 +13,7 @@ use std::collections::HashMap;
 
 const MAX: u64 = 100;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // If a1^b1 = a2^b2, then a1 = a^p1, a2 = a^p2, b1*p1 = b2*p2 for some "a".
     // We will mark, e.g., 8^60 is a duplicate of 4^90, and 4^50 is a duplicate
     // of 2^100. To do this, first we create the map of a^p1 to (a, p1).
@@ -48,6 +48,5 @@ pub fn solve() {
     }
 
     let result = (MAX - 1).pow(2) - duplicates_count;
-
-    println!("{result}");
+    result.into()
 }

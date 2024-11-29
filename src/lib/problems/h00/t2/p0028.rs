@@ -14,7 +14,7 @@
 //! What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
 //! formed in the same way?
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // 73 __ __ __ __ __ __ __ 81
     // __ 43 44 45 46 47 48 49 50
     // __ 42 21 22 23 24 25 26 51
@@ -34,6 +34,5 @@ pub fn solve() {
 
     // Don't forget to add 1 at the center
     let result = 2 * n * (8 * n * n + 15 * n + 13) / 3 + 1;
-
-    println!("{result}");
+    result.into()
 }

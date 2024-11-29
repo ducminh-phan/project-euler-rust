@@ -15,9 +15,8 @@
 
 use crate::primes::{is_prime, PrimeSet, Primes};
 
-pub fn solve() {
-    let result = solve_with_n(1_000_000);
-    println!("{result}");
+pub fn solve() -> crate::Answer {
+    solve_with_n(1_000_000).into()
 }
 
 fn solve_with_n(limit: u64) -> u64 {

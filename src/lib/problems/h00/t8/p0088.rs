@@ -31,7 +31,7 @@ use itertools::Itertools;
 
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let max_k: u64 = parse_env("MAX_K", 12000);
 
     // s[k] is the minimal k-product-sum number
@@ -49,8 +49,7 @@ pub fn solve() {
         }
     }
 
-    let result = s[2..].iter().unique().sum::<u64>();
-    println!("{result}");
+    s[2..].iter().unique().sum::<u64>().into()
 }
 
 /// Find all values of `k` such that `n` can be represented as the product and

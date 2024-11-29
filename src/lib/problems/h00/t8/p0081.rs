@@ -18,7 +18,7 @@ use itertools::Itertools;
 
 use crate::utils::read_file;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let matrix = read_file("assets/0081_matrix.txt", '\n')
         .iter()
         .map(|line| {
@@ -49,6 +49,5 @@ pub fn solve() {
         dp = curr
     }
 
-    let result = dp.last().unwrap();
-    println!("{result}");
+    dp.last().unwrap().into()
 }

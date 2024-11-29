@@ -17,7 +17,7 @@ use itertools::Itertools;
 use crate::numbers::digits;
 use crate::primes::{PrimeSet, Primes};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut primes = Primes::new();
     let mut map = HashMap::<String, Vec<u64>>::new();
     for p in primes
@@ -34,13 +34,12 @@ pub fn solve() {
         && v.len() >= 3
     }));
 
-    let result = map
-        .values()
+    map.values()
         .flat_map(|v| find_arithmetic_subsequence(v))
         .map(|v| v.iter().join(""))
         .next()
-        .unwrap();
-    println!("{result}");
+        .unwrap()
+        .into()
 }
 
 fn find_arithmetic_subsequence(nums: &[u64]) -> Option<[u64; 3]> {

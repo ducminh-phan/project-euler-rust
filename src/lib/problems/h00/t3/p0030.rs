@@ -16,7 +16,7 @@
 
 use crate::numbers::digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // Assume that a number "n" has "k" digits and is the sum of fifth powers of
     // its digits => 10^(k-1) < n < k * 9^5
 
@@ -31,8 +31,7 @@ pub fn solve() {
         .collect::<Vec<_>>();
     dbg!(&nums);
 
-    let result: u32 = nums.iter().sum();
-    println!("{result}");
+    nums.iter().sum::<u32>().into()
 }
 
 fn sum_digit_powers(n: u32, p: u32) -> u32 {

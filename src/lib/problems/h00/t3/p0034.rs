@@ -10,7 +10,7 @@ use crate::numbers::digits;
 const DIGIT_FACTORIALS: [u32; 10] =
     [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880];
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // Assume that a number "n" has "k" digits and equal to the sum of the
     // factorial of its digits => 10^(k-1) < n < k * 9!
 
@@ -30,6 +30,5 @@ pub fn solve() {
         .collect::<Vec<_>>();
     dbg!(&nums);
 
-    let result = nums.iter().sum::<u32>();
-    println!("{result}");
+    nums.iter().sum::<u32>().into()
 }

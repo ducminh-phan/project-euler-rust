@@ -11,7 +11,7 @@
 //!
 //! Find the maximum total from top to bottom of the triangle below.
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     #[allow(clippy::zero_prefixed_literal)]
     let triangle = vec![
         vec![75],
@@ -61,6 +61,5 @@ pub fn solve() {
         }
     }
 
-    let result = max_by_elements.last().unwrap().iter().max().unwrap();
-    println!("{result}");
+    max_by_elements.last().unwrap().iter().max().unwrap().into()
 }

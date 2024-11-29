@@ -15,7 +15,7 @@
 //! How many, not necessarily distinct, values of `nCr` for `1 <= n <= 100`,
 //! are greater than one-million?
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let limit = 1e6 as u32;
 
     let mut result = 0;
@@ -34,5 +34,5 @@ pub fn solve() {
         pascal_row = next_row;
     }
 
-    println!("{result}");
+    result.into()
 }

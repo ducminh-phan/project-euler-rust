@@ -18,7 +18,7 @@ use std::io::BufRead;
 
 // noinspection DuplicatedCode
 // We just duplicate the solution from p0018
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let triangle = read_triangle();
 
     let mut max_by_elements = vec![vec![triangle[0][0]]];
@@ -51,8 +51,7 @@ pub fn solve() {
         }
     }
 
-    let result = max_by_elements.last().unwrap().iter().max().unwrap();
-    println!("{result}");
+    max_by_elements.last().unwrap().iter().max().unwrap().into()
 }
 
 fn read_triangle() -> Vec<Vec<u64>> {

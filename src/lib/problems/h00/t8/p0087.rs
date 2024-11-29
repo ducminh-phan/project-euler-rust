@@ -17,7 +17,7 @@ use num::integer::Roots;
 
 use crate::primes::{PrimeSet, Primes};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let max = 5e7 as u64;
     let max_a = max.sqrt();
     let max_b = max.cbrt();
@@ -31,11 +31,10 @@ pub fn solve() {
     let primes_b = primes_a.iter().take_while(|p| **p <= max_b);
     let primes_c = primes_a.iter().take_while(|p| **p <= max_c);
 
-    let result = iproduct!(primes_a.iter(), primes_b, primes_c)
+    iproduct!(primes_a.iter(), primes_b, primes_c)
         .map(|(a, b, c)| a.pow(2) + b.pow(3) + c.pow(4))
         .filter(|p| *p < max)
         .unique()
-        .count();
-
-    println!("{result}");
+        .count()
+        .into()
 }

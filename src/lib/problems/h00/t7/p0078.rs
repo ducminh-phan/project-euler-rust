@@ -14,12 +14,13 @@
 //!
 //! Find the least value of `n` for which `p(n)` is divisible by one million.
 
-pub fn solve() {
-    let (result, _) = PartitionNumbers::new(1e6 as i64)
+pub fn solve() -> crate::Answer {
+    PartitionNumbers::new(1e6 as i64)
         .enumerate()
         .find(|(_, p)| *p == 0)
-        .unwrap();
-    println!("{result}");
+        .unwrap()
+        .0
+        .into()
 }
 
 struct PartitionNumbers {

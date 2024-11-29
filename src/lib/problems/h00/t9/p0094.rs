@@ -12,18 +12,17 @@
 use crate::numbers::is_square;
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // Let a-a-(a±1) be the sides of the triangle, we can prove by contradiction
     // that `a` must be an odd number. Let b = 2k be the base of the triangle.
     // => a = 2k ± 1, perimeter = 6k ± 2
 
     let max_p = parse_env("MAX_P", 1e9 as u64);
-    let result = (3u64..)
+    (3u64..)
         .take_while(|k| 6 * k - 2 <= max_p)
         .flat_map(|k| [(k, 2 * k + 1), (k, 2 * k - 1)])
         .filter(|(k, a)| is_square(a * a - k * k))
         .map(|(k, a)| 2 * (k + a))
-        .sum::<u64>();
-
-    println!("{result}");
+        .sum::<u64>()
+        .into()
 }

@@ -6,8 +6,6 @@
 
 use num::Integer;
 
-pub fn solve() {
-    let result: u32 = (1..20).fold(1, |p, n| p.lcm(&n));
-
-    println!("{result}");
+pub fn solve() -> crate::Answer {
+    (1..20).fold(1, |p, n| p.lcm(&n)).into()
 }

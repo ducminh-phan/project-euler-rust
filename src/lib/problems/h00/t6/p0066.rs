@@ -35,16 +35,15 @@ use crate::continued_fractions::{
 use crate::numbers::is_square;
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = parse_env("CEILING", 1000);
-    let result = (2..=ceiling)
+    (2..=ceiling)
         .filter(|n| !is_square(*n))
         .map(|n| (n, find_fundamental_solution(n)))
         .max_by(|a, b| a.1 .0.cmp(&b.1 .0))
         .map(|(n, _)| n)
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .into()
 }
 
 /// https://en.wikipedia.org/wiki/Pell%27s_equation#Fundamental_solution_via_continued_fractions

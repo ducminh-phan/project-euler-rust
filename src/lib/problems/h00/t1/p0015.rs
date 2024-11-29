@@ -12,7 +12,7 @@
 
 const SIZE: usize = 21;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut grid = [[0u64; SIZE]; SIZE];
     for i in 0..SIZE {
         grid[i][0] = 1;
@@ -25,5 +25,5 @@ pub fn solve() {
         }
     }
 
-    println!("{}", grid[SIZE - 1][SIZE - 1])
+    grid[SIZE - 1][SIZE - 1].into()
 }

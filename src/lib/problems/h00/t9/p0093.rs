@@ -26,7 +26,7 @@ use std::collections::HashSet;
 
 use itertools::Itertools;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let (ds, _) = (1..10)
         .combinations(4)
         .map(|ds| {
@@ -37,8 +37,7 @@ pub fn solve() {
         .max_by_key(|(_, max_n)| *max_n)
         .unwrap();
 
-    let result = ds.into_iter().join("");
-    println!("{result}");
+    ds.into_iter().join("").into()
 }
 
 fn evaluate(nums: &[f64]) -> Vec<u64> {

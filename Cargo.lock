@@ -1356,6 +1356,7 @@ dependencies = [
  "minijinja",
  "nalgebra",
  "num",
+ "paste",
  "path_macro",
  "reqwest",
 ]

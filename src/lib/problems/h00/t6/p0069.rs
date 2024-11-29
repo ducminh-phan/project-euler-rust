@@ -21,10 +21,10 @@
 
 use crate::primes::{PrimeSet, Primes};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = 1e6 as u64;
 
-    let result = Primes::new()
+    Primes::new()
         .iter()
         .scan(1u64, |acc, p| {
             *acc *= p;
@@ -32,7 +32,6 @@ pub fn solve() {
         })
         .take_while(|p| *p < ceiling)
         .last()
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .into()
 }

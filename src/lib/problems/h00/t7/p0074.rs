@@ -42,10 +42,12 @@ const CACHE_SIZE: usize = 1e6 as usize;
 static CHAIN_LENGTH_CACHE: LazyLock<Mutex<Vec<usize>>> =
     LazyLock::new(|| Mutex::new(vec![0; CACHE_SIZE]));
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = 1e6 as u64;
-    let result = (1..ceiling).filter(|n| find_chain_length(*n) == 60).count();
-    println!("{result}");
+    (1..ceiling)
+        .filter(|n| find_chain_length(*n) == 60)
+        .count()
+        .into()
 }
 
 fn sum_of_digits_factorials(n: u64) -> u64 {

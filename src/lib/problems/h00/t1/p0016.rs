@@ -6,8 +6,7 @@ use num::BigUint;
 
 use crate::numbers::sum_of_digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let n = num::pow(BigUint::from(2u8), 1000);
-    let result = sum_of_digits(n);
-    println!("{result}");
+    sum_of_digits(n).into()
 }

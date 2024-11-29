@@ -13,7 +13,7 @@ use std::collections::VecDeque;
 use crate::numbers::n_digits;
 use crate::primes::is_prime;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // first digit must be 2, 3, 5, 7
     // last digit must be 3, 7
     // middle digits must be 1, 3, 7, 9
@@ -38,8 +38,7 @@ pub fn solve() {
 
     dbg!(&truncatable_primes);
 
-    let result = truncatable_primes.iter().sum::<u64>();
-    println!("{result}");
+    truncatable_primes.iter().sum::<u64>().into()
 }
 
 fn is_left_truncatable_prime(p: u64) -> bool {

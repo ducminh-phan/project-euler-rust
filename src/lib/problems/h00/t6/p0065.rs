@@ -45,12 +45,10 @@
 use crate::continued_fractions::Convergents;
 use crate::numbers::sum_of_digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let iter = Box::new((1u8..).flat_map(|k| [1, 2 * k, 1]));
     let mut convergents = Convergents::from_iter(2u8, iter);
 
     let (n, _) = convergents.nth(99).unwrap();
-    let result = sum_of_digits(n);
-
-    println!("{result}");
+    sum_of_digits(n).into()
 }

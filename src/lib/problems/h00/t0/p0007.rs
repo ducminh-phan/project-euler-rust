@@ -5,7 +5,6 @@
 
 use crate::primes::{PrimeSet, Primes};
 
-pub fn solve() {
-    let result = Primes::new().iter().take(10001).last().unwrap();
-    println!("{result}")
+pub fn solve() -> crate::Answer {
+    Primes::new().iter().take(10001).last().unwrap().into()
 }

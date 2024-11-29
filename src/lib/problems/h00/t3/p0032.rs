@@ -17,7 +17,7 @@ use itertools::{iproduct, Itertools};
 
 use crate::numbers::digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // There are two cases:
     // - 1-digit * 4-digit = 4-digit
     // - 2-digit * 3-digit = 4-digit
@@ -36,8 +36,7 @@ pub fn solve() {
             .map(|(a, b)| a * b),
     );
 
-    let result: u32 = products.iter().sum();
-    println!("{result}");
+    products.iter().sum::<u32>().into()
 }
 
 fn is_product_pandigital(a: u32, b: u32) -> bool {

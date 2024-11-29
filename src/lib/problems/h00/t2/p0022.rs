@@ -13,13 +13,12 @@ use itertools::Itertools;
 
 use crate::utils::{read_file, word_score};
 
-pub fn solve() {
-    let result: u32 = read_file("assets/0022_names.txt", ',')
+pub fn solve() -> crate::Answer {
+    read_file("assets/0022_names.txt", ',')
         .iter()
         .sorted()
         .enumerate()
         .map(|(i, s)| (i as u32 + 1u32) * word_score(s))
-        .sum();
-
-    println!("{result}");
+        .sum::<u32>()
+        .into()
 }

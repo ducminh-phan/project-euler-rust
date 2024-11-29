@@ -7,15 +7,15 @@ use itertools::Itertools;
 
 use crate::numbers::is_palindrome;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let n = 3;
-    let result = (10u32.pow(n - 1)..(10u32.pow(n) - 1))
+
+    (10u32.pow(n - 1)..(10u32.pow(n) - 1))
         .combinations_with_replacement(2)
         .map(|items| items.iter().product::<u32>())
         .sorted()
         .rev()
         .find_or_first(is_palindrome)
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .into()
 }

@@ -14,7 +14,7 @@ use itertools::Itertools;
 
 use crate::utils::read_file;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let lines = read_file("assets/0079_keylog.txt", '\n')
         .iter()
         .map(|line| {
@@ -37,6 +37,5 @@ pub fn solve() {
             }
         });
 
-    let result = digits.iter().join("");
-    println!("{result}");
+    digits.iter().join("").into()
 }

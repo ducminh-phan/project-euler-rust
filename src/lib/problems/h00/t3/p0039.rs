@@ -9,9 +9,8 @@
 
 use crate::misc::pythagorean_triplet_count_by_sum;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let counter = pythagorean_triplet_count_by_sum(1000);
 
-    let (result, _) = counter.iter().max_by_key(|(_, v)| *v).unwrap();
-    println!("{result}");
+    counter.iter().max_by_key(|(_, v)| *v).unwrap().0.into()
 }

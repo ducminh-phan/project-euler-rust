@@ -8,15 +8,15 @@ use itertools::Itertools;
 
 use crate::numbers::digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     for i in 1u64.. {
         if (1..=6).map(|x| x * i).map(normalize).unique().count() == 1 {
             let result = i;
-            println!("{result}");
-
-            return;
+            return result.into();
         }
     }
+
+    panic!("No solution found!");
 }
 
 fn normalize(n: u64) -> String {

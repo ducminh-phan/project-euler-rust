@@ -6,15 +6,14 @@
 
 use std::collections::HashMap;
 
-pub fn solve() {
-    let r = (2..1000)
+pub fn solve() -> crate::Answer {
+    (2..1000)
         .map(find_cycle_length)
         .enumerate()
         .max_by_key(|(_, val)| *val)
         .map(|(idx, _)| idx + 2)
-        .unwrap();
-
-    println!("{r}");
+        .unwrap()
+        .into()
 }
 
 fn find_cycle_length(n: u32) -> u32 {

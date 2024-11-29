@@ -6,20 +6,20 @@
 //! Although there exists no rectangular grid that contains exactly two million
 //! rectangles, find the area of the grid with the nearest solution.
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // A rectangle of size m * n contains m*(m + 1) * n*(n + 1) / 4 rectangles.
     // W.L.O.G, assuming m >= n, then n <= max_n.
     let (_, max_n) = solve_eq(8e6f64.sqrt());
     dbg!(max_n);
 
-    let (result, _) = (1..=max_n)
+    (1..=max_n)
         .map(|n| (n, solve_eq(8e6f64 / (n * (n + 1)) as f64)))
         .flat_map(|(n, (m1, m2))| [(n, m1), (n, m2)])
         .map(|(n, m)| (m * n, m * (m + 1) * n * (n + 1) / 4))
         .min_by_key(|(_, count)| (count - (2e6 as i32)).abs())
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .0
+        .into()
 }
 
 /// Solve the equation x * (x + 1) ≈ k, the answer is (x1, x2), where

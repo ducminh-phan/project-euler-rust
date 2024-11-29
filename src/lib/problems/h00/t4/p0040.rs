@@ -43,18 +43,17 @@ impl Iterator for Digits {
     }
 }
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let indices = (0..=6)
         .map(|p| 10u32.pow(p) as usize)
         .collect::<Vec<usize>>();
     let max_index = indices.iter().max().unwrap();
 
-    let result = Digits::new()
+    Digits::new()
         .enumerate()
         .take_while(|(i, _)| i <= max_index)
         .filter(|(i, _)| indices.contains(&(i + 1)))
         .map(|(_, d)| d as u32)
-        .product::<u32>();
-
-    println!("{result}");
+        .product::<u32>()
+        .into()
 }

@@ -15,13 +15,15 @@
 use crate::misc::coins_sum;
 use crate::primes::{PrimeSet, Primes};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let primes = Primes::new()
         .iter()
         .take_while(|p| *p < 100)
         .map(|p| p as usize)
         .collect::<Vec<_>>();
 
-    let result = (1usize..).find(|n| coins_sum(&primes, *n) > 5000).unwrap();
-    println!("{result}");
+    (1usize..)
+        .find(|n| coins_sum(&primes, *n) > 5000)
+        .unwrap()
+        .into()
 }

@@ -107,7 +107,7 @@ const NUMBERS: [&str; 100] = [
 
 const SIZE: usize = 50;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let digits_list: Vec<Vec<u32>> = NUMBERS
         .iter()
         .map(|s| {
@@ -140,7 +140,5 @@ pub fn solve() {
         }
     }
 
-    let result = sum_digits.iter().rev().take(10).join("");
-
-    println!("{result}");
+    sum_digits.iter().rev().take(10).join("").into()
 }

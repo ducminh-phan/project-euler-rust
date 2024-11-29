@@ -10,7 +10,7 @@
 //! `10^{12} = 1,000,000,000,000` discs in total, determine the number of blue
 //! discs that the box would contain.
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // We need to find a, b such that a/b * (a-1)/(b-1) = 1/2
     // <=> u^2 - 2v^2 = -1, where u = 2b - 1, v = 2a - 1
     // The negative Pell equation u^2 - 2v^2 = -1 has the fundamental solution
@@ -25,6 +25,5 @@ pub fn solve() {
         (u, v) = (3 * u + 4 * v, 2 * u + 3 * v);
     }
 
-    let result = (v + 1) / 2;
-    println!("{result}");
+    ((v + 1) / 2).into()
 }

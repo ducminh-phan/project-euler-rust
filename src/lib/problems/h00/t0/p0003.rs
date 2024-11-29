@@ -27,12 +27,11 @@ fn prime_factors(n: u64) -> Vec<u64> {
     _prime_factors(n, 2)
 }
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let n = 600851475143;
     let factors = prime_factors(n);
 
-    let result = factors[0];
-    println!("{result}");
+    factors[0].into()
 }
 
 #[cfg(test)]

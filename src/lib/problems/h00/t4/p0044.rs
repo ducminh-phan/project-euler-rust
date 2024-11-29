@@ -14,7 +14,7 @@
 
 use crate::numbers::is_pentagonal_number;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // We iterate d = 0, 1,..., then find j such that P(j) + P(d) is a
     // pentagonal number. If there exists k such that P(j) + P(d) = P(k),
     // then we have P(j) + P(d) = P(k) >= P(j+1)
@@ -35,9 +35,10 @@ pub fn solve() {
 
             let p_s = p_j + p_k;
             if is_pentagonal_number(p_s) {
-                println!("{}", p_d);
-                return;
+                return p_d.into();
             }
         }
     }
+
+    panic!("No solution found!");
 }

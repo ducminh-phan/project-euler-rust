@@ -13,14 +13,13 @@ use num::BigUint;
 
 use crate::numbers::is_square;
 
-pub fn solve() {
-    let result = (2..100)
+pub fn solve() -> crate::Answer {
+    (2..100)
         .filter(|n| !is_square(*n))
         // We need to include the integer part
         .map(|n| sqrt_digits_sum(n, 99) + n.sqrt())
-        .sum::<u64>();
-
-    println!("{result}");
+        .sum::<u64>()
+        .into()
 }
 
 fn sqrt_digits_sum(n: u64, precision: u64) -> u64 {

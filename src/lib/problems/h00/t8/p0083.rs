@@ -51,7 +51,7 @@ impl PartialOrd for State {
     }
 }
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let matrix = read_file("assets/0083_matrix.txt", '\n')
         .iter()
         .map(|line| {
@@ -60,8 +60,7 @@ pub fn solve() {
         .collect_vec();
     let n = matrix.len();
 
-    let result = shortest_path(&matrix, 0, n * n - 1).unwrap();
-    println!("{result}");
+    shortest_path(&matrix, 0, n * n - 1).unwrap().into()
 }
 
 // Dijkstra's shortest path algorithm.

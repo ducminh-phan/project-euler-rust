@@ -10,12 +10,12 @@
 
 use num::{BigUint, One};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let modulus = BigUint::from(1e10 as u64);
     let p = 28433u32
         * BigUint::from(2u32).modpow(&BigUint::from(7830457u32), &modulus)
         + BigUint::one();
-    let result = p % modulus;
 
-    println!("{result}");
+    let result = p % modulus;
+    result.into()
 }

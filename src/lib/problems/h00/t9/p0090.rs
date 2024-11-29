@@ -40,16 +40,15 @@ static SQUARES: LazyLock<Vec<(u8, u8)>> = LazyLock::new(|| {
     (1..10).map(|n| n * n).map(|n| (n / 10, n % 10)).collect()
 });
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let permutations = (0..10u8).combinations(6).map(add_69);
 
-    let result = permutations
+    permutations
         .combinations(2)
         .map(convert_type)
         .filter(is_valid_dices)
-        .count();
-
-    println!("{result}");
+        .count()
+        .into()
 }
 
 fn add_69(mut v: Vec<u8>) -> Vec<u8> {

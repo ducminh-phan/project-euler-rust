@@ -30,15 +30,14 @@ const NUM_STRING: &str = "\
 
 const WINDOW_SIZE: usize = 13;
 
-pub fn solve() {
-    let result: u64 = NUM_STRING
+pub fn solve() -> crate::Answer {
+    NUM_STRING
         .chars()
         .map(|c| c.to_digit(10).unwrap() as u64)
         .collect_vec()
         .windows(WINDOW_SIZE)
-        .map(|w| w.iter().product())
+        .map(|w| w.iter().product::<u64>())
         .max()
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .into()
 }

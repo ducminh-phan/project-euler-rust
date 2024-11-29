@@ -22,7 +22,7 @@
 
 use itertools::Itertools;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let max_n = 1e6 as usize;
     let mut divisors = vec![vec![1]; max_n + 1];
 
@@ -80,5 +80,5 @@ pub fn solve() {
         }
     }
 
-    println!("{result}");
+    result.into()
 }

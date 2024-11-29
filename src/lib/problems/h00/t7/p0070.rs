@@ -14,18 +14,18 @@
 
 use crate::numbers::{compute_phi_to_n, digits};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = 1e7 as u64;
     let phi = compute_phi_to_n(ceiling - 1);
 
-    let (result, _) = (2..ceiling)
+    (2..ceiling)
         .map(|n| (n, phi[n as usize]))
         .filter(|(n, f)| signature(*n) == signature(*f))
         .map(|(n, f)| (n, (n as f64) / f as f64))
         .min_by(|(_, a), (_, b)| a.total_cmp(b))
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .0
+        .into()
 }
 
 fn signature(n: u64) -> [u8; 10] {

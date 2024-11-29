@@ -20,7 +20,7 @@ use itertools::Itertools;
 
 use crate::numbers::{digits, num_from_digits};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // There are 4 cases of k * (1...n):
     // - n = 2: k has 4 digits, 2 * k has 5 digits
     // - n = 3: k, 2 * k, 3 * k have 3 digits each
@@ -30,8 +30,11 @@ pub fn solve() {
     // We will just iterate from 1 to 10000 (right-exclusive) and find possible
     // pandigital products
 
-    let result = (1..10_000).flat_map(find_pandigital_product).max().unwrap();
-    println!("{result}");
+    (1..10_000)
+        .flat_map(find_pandigital_product)
+        .max()
+        .unwrap()
+        .into()
 }
 
 fn find_pandigital_product(k: u32) -> Option<u64> {

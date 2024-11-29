@@ -13,7 +13,7 @@
 
 use crate::utils::read_file;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let result = read_file("assets/0099_base_exp.txt", '\n')
         .iter()
         .map(|line| line.split(','))
@@ -30,5 +30,5 @@ pub fn solve() {
         .0
         + 1;
 
-    println!("{result}");
+    result.into()
 }

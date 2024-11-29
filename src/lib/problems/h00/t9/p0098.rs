@@ -23,7 +23,7 @@ use num::integer::Roots;
 use crate::numbers::{digits, is_square, num_from_digits};
 use crate::utils::read_file;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let words = read_file("assets/0098_words.txt", ',');
     let mut anagram_words = HashMap::new();
 
@@ -42,15 +42,14 @@ pub fn solve() {
         anagram_words.remove(k);
     });
 
-    let result = anagram_words
+    anagram_words
         .values()
         .flat_map(|v| v.iter().combinations(2))
         .map(|p| (p[0].clone(), p[1].clone()))
         .flat_map(process_anagram_pair)
         .max()
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .into()
 }
 
 fn chars_signature<S: AsRef<str>>(s: S) -> [u8; 26] {

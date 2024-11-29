@@ -14,7 +14,7 @@
 use itertools::iproduct;
 use num::integer::gcd;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // We need to find the digits a, b, c such that ab/bc = a/c, or
     // c * (10a + b) = a * (10b + c)
 
@@ -37,6 +37,5 @@ pub fn solve() {
         .reduce(|(n_acc, d_acc), (n, d)| (n_acc * n, d_acc * d))
         .unwrap();
 
-    let result = d / gcd(n, d);
-    println!("{result}");
+    (d / gcd(n, d)).into()
 }

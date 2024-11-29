@@ -20,7 +20,7 @@ use itertools::Itertools;
 
 use crate::utils::read_file;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let matrix = read_file("assets/0082_matrix.txt", '\n')
         .iter()
         .map(|line| {
@@ -35,8 +35,7 @@ pub fn solve() {
         matrix[row_idx] = compute_new_row(&matrix, row_idx);
     }
 
-    let result = matrix.last().unwrap().iter().min().unwrap();
-    println!("{result}");
+    matrix.last().unwrap().iter().min().unwrap().into()
 }
 
 fn compute_new_row(matrix: &[Vec<u64>], row_idx: usize) -> Vec<u64> {

@@ -22,9 +22,8 @@
 
 use crate::misc::pythagorean_triplet_count_by_sum;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let counter = pythagorean_triplet_count_by_sum(1_500_000);
 
-    let result = counter.iter().filter(|(_, v)| **v == 1).count();
-    println!("{result}");
+    counter.iter().filter(|(_, v)| **v == 1).count().into()
 }

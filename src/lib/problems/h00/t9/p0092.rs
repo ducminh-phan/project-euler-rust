@@ -16,7 +16,7 @@
 
 use crate::numbers::digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let max_n = 1e7 as usize;
     let mut cache = vec![0; max_n];
     cache[1] = 1;
@@ -45,7 +45,7 @@ pub fn solve() {
         }
     }
 
-    println!("{count}");
+    count.into()
 }
 
 fn sum_of_digit_squares(n: usize) -> usize {

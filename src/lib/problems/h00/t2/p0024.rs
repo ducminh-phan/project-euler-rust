@@ -11,7 +11,7 @@
 use itertools::Itertools;
 use num::pow;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     // https://github.com/starblue/permutations/blob/bc925efc3cb4fe759ae8523884605368098b4546/src/permutations.rs#L18
     let index: usize = pow(10, 6) - 1;
     let n: usize = 10;
@@ -37,6 +37,5 @@ pub fn solve() {
         k -= 1;
     }
 
-    let result = permutation.iter().join("");
-    println!("{result}");
+    permutation.iter().join("").into()
 }

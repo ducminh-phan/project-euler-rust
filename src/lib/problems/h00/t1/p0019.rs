@@ -33,7 +33,7 @@ fn count_days_of_month(year: u32, month: u32) -> u32 {
     }
 }
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut result = 0;
 
     // 1 Jan 1900 was a Monday
@@ -53,7 +53,7 @@ pub fn solve() {
         }
     }
 
-    println!("{result}");
+    result.into()
 }
 
 #[cfg(test)]

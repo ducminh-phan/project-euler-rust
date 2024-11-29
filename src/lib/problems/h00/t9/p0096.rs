@@ -32,8 +32,8 @@ use itertools::Itertools;
 use crate::numbers::num_from_digits;
 use crate::utils::read_file;
 
-pub fn solve() {
-    let result = read_file("assets/0096_sudoku.txt", '\n')
+pub fn solve() -> crate::Answer {
+    read_file("assets/0096_sudoku.txt", '\n')
         .iter()
         .chunks(10)
         .into_iter()
@@ -50,9 +50,8 @@ pub fn solve() {
             brute_solve(&mut sudoku);
             num_from_digits(&sudoku.0[..3])
         })
-        .sum::<u64>();
-
-    println!("{result}");
+        .sum::<u64>()
+        .into()
 }
 
 struct Sudoku([u8; 9 * 9]);

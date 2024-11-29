@@ -16,9 +16,8 @@
 use crate::numbers::compute_phi_to_n;
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = parse_env("CEILING", 1e6 as u64);
     let phi = compute_phi_to_n(ceiling);
-    let result = phi[2..=ceiling as usize].iter().sum::<u64>();
-    println!("{result}");
+    phi[2..=ceiling as usize].iter().sum::<u64>().into()
 }

@@ -13,12 +13,13 @@
 
 use crate::numbers::{is_pentagonal_number, is_triangle_number};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     for n in 144.. {
         let t_n = n * (2 * n - 1);
         if is_triangle_number(t_n) && is_pentagonal_number(t_n) {
-            println!("{}", t_n);
-            return;
+            return t_n.into();
         }
     }
+
+    panic!("No solution found!");
 }

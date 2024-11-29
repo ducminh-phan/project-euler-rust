@@ -18,7 +18,7 @@
 use crate::numbers::is_square;
 use crate::primes::{PrimeSet, Primes};
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut primes = Primes::new();
     while primes.list().is_empty() || primes.list().last() < Some(&10) {
         primes.expand()
@@ -35,8 +35,7 @@ pub fn solve() {
                 .filter(|p| **p < n)
                 .all(|p| !is_square((n - p) / 2))
             {
-                println!("{}", n);
-                return;
+                return n.into();
             }
         }
 

@@ -70,13 +70,11 @@ use num::Complex;
 
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let dice_size: usize = parse_env("DICE_SIZE", 4);
 
     let markov_process = MarkovProcess::new(dice_size);
-    let result = compute(&markov_process.compute_transition_matrix());
-
-    println!("{result}");
+    compute(&markov_process.compute_transition_matrix()).into()
 }
 
 #[allow(dead_code, clippy::upper_case_acronyms)]

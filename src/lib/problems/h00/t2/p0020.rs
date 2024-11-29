@@ -9,12 +9,11 @@ use num::BigUint;
 
 use crate::numbers::sum_of_digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut p = BigUint::from(1u8);
     for n in 2..=100u8 {
         p *= BigUint::from(n);
     }
 
-    let result = sum_of_digits(p);
-    println!("{result}");
+    sum_of_digits(p).into()
 }

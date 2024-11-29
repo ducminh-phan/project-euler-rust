@@ -38,12 +38,12 @@ use itertools::Itertools;
 
 use crate::utils::read_file;
 
-pub fn solve() {
-    let result = read_file("assets/0089_roman.txt", '\n')
+pub fn solve() -> crate::Answer {
+    read_file("assets/0089_roman.txt", '\n')
         .iter()
         .map(|s| s.len() - RomanNumeral::from_str(s).unwrap().to_string().len())
-        .sum::<usize>();
-    println!("{result}");
+        .sum::<usize>()
+        .into()
 }
 
 struct RomanNumeralSystem {

@@ -33,8 +33,8 @@
 
 use itertools::Itertools;
 
-pub fn solve() {
-    let result = (1..=10)
+pub fn solve() -> crate::Answer {
+    (1..=10)
         .permutations(10)
         .map(to_array)
         .filter(is_min_first)
@@ -42,9 +42,8 @@ pub fn solve() {
         .map(to_string)
         .filter(|s| s.len() == 16)
         .max()
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .into()
 }
 
 fn to_array(permutation: Vec<u8>) -> [u8; 10] {

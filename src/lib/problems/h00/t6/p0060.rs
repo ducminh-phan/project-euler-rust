@@ -15,7 +15,7 @@ use crate::numbers::n_digits;
 use crate::primes::{is_prime_fast, PrimeSet, Primes};
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = parse_env("CEILING", 10_000);
     let set_size = parse_env("SET_SIZE", 5);
 
@@ -76,9 +76,7 @@ pub fn solve() {
                 dbg!(p1, p2, &subset);
 
                 let result = p1 + p2 + subset.into_iter().sum::<u64>();
-                println!("{result}");
-
-                return;
+                return result.into();
             }
         }
     }

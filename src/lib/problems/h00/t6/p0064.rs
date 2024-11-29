@@ -42,12 +42,11 @@
 use crate::continued_fractions::compute_continued_fraction_sqrt;
 use crate::numbers::is_square;
 
-pub fn solve() {
-    let result = (2..=10_000)
+pub fn solve() -> crate::Answer {
+    (2..=10_000)
         .filter(|n| !is_square(*n))
         .map(compute_continued_fraction_sqrt)
         .filter(|(_, cycle)| cycle.len() % 2 == 1)
-        .count();
-
-    println!("{result}");
+        .count()
+        .into()
 }

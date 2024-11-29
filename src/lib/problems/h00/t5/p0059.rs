@@ -49,15 +49,14 @@ static CIPHER_TEXT: LazyLock<Vec<u8>> = LazyLock::new(|| {
         .collect::<Vec<_>>()
 });
 
-pub fn solve() {
-    let result = iproduct!(0..26, 0..26, 0..26)
+pub fn solve() -> crate::Answer {
+    iproduct!(0..26, 0..26, 0..26)
         .map(|(a, b, c)| [b'a' + a, b'a' + b, b'a' + c])
         .map(|k| compute_key_score(&k))
         .max_by_key(|(_sum, score)| *score)
         .unwrap()
-        .0;
-
-    println!("{result}");
+        .0
+        .into()
 }
 
 fn compute_key_score(key: &[u8; 3]) -> (u64, u64) {

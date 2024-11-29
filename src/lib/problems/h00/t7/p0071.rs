@@ -16,7 +16,7 @@
 
 use num::integer::gcd;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = 1e6 as u64;
     let (n, d) = (8..=ceiling)
         .map(|d| ((3 * d - 1) / 7, d))
@@ -28,5 +28,5 @@ pub fn solve() {
         .unwrap();
 
     dbg!(n, d);
-    println!("{n}")
+    n.into()
 }

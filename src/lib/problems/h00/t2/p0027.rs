@@ -23,7 +23,7 @@ use crate::primes::is_prime;
 const MAX_A: i64 = 999;
 const MAX_B: i64 = 1000;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     fn eval(n: u64, a: i64, b: i64) -> i64 {
         (n * n) as i64 + a * (n as i64) + b
     }
@@ -45,5 +45,5 @@ pub fn solve() {
         .unwrap();
     dbg!(a, b);
 
-    println!("{}", a * b);
+    (a * b).into()
 }

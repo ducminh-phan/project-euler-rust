@@ -23,7 +23,7 @@ use num::BigUint;
 
 use crate::numbers::n_digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let (mut n, mut d) = (BigUint::from(3u8), BigUint::from(2u8));
     let mut result = 0;
     for _ in 0..1000 {
@@ -33,5 +33,5 @@ pub fn solve() {
         }
     }
 
-    println!("{result}");
+    result.into()
 }

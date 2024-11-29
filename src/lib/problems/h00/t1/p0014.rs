@@ -35,14 +35,14 @@ fn find_collatz_sequence_length(n: u64) -> u64 {
     count
 }
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let (result, length) = (1..(1e6 as u64))
         .map(|n| (n, find_collatz_sequence_length(n)))
         .max_by_key(|(_, len)| *len)
         .unwrap();
     dbg!(length);
 
-    println!("{result}");
+    result.into()
 }
 
 #[cfg(test)]

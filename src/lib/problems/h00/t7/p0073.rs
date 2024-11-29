@@ -18,7 +18,7 @@ use num::integer::gcd;
 use crate::numbers::compute_phi_to_n;
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling = parse_env("CEILING", 12000);
     let phi = compute_phi_to_n(ceiling);
     let total_up_to_one_half =
@@ -27,7 +27,7 @@ pub fn solve() {
         (2..=ceiling).map(count_up_to_one_third).sum::<u64>();
 
     let result: u64 = total_up_to_one_half - total_up_to_one_third - 1;
-    println!("{result}");
+    result.into()
 }
 
 fn count_up_to_one_third(d: u64) -> u64 {

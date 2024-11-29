@@ -20,18 +20,18 @@
 use crate::numbers::is_square;
 use crate::utils::parse_env;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let ceiling: u64 = parse_env("CEILING", 1_000_000);
-    let (result, _) = (1..)
+    (1..)
         .map(|m| (m, count_cuboids(m)))
         .scan((0, 0), |state, (m, c)| {
             *state = (m, state.1 + c);
             Some(*state)
         })
         .find(|(_, c)| *c > ceiling)
-        .unwrap();
-
-    println!("{result}");
+        .unwrap()
+        .0
+        .into()
 }
 
 fn count_cuboids(a: u64) -> u64 {

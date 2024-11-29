@@ -9,11 +9,11 @@
 
 use crate::numbers::digits;
 
-pub fn solve() {
-    let result = (1..1_000_000)
+pub fn solve() -> crate::Answer {
+    (1..1_000_000)
         .filter(|n| is_palindromic_base_2(*n) && is_palindromic_base_10(*n))
-        .sum::<u32>();
-    println!("{result}");
+        .sum::<u32>()
+        .into()
 }
 
 fn is_palindromic_base_10(n: u32) -> bool {

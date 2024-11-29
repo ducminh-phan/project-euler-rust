@@ -26,7 +26,7 @@ use itertools::Itertools;
 use crate::numbers::factor;
 use crate::primes::Primes;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut primes = Primes::new();
 
     let (result, n_factors): (u64, usize) = (1..)
@@ -41,5 +41,5 @@ pub fn solve() {
 
     dbg!(n_factors);
 
-    println!("{result}");
+    result.into()
 }

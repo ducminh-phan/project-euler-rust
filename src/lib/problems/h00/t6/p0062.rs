@@ -10,7 +10,7 @@ use std::collections::HashMap;
 
 use crate::numbers::digits;
 
-pub fn solve() {
+pub fn solve() -> crate::Answer {
     let mut map = HashMap::<_, Vec<u64>>::new();
     for i in 1u64.. {
         let n = i.pow(3);
@@ -22,11 +22,11 @@ pub fn solve() {
             dbg!(&numbers);
 
             let result = &numbers[0];
-            println!("{result}");
-
-            return;
+            return result.into();
         }
     }
+
+    panic!("No solution found!");
 }
 
 fn signature(n: u64) -> [u8; 10] {

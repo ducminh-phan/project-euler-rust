@@ -16,8 +16,8 @@ use std::iter::repeat_n;
 
 use itertools::Itertools;
 
-pub fn solve() {
-    let result = repeat_n(0..=50, 4)
+pub fn solve() -> crate::Answer {
+    repeat_n(0..=50, 4)
         .multi_cartesian_product()
         .map(convert_type)
         .filter(|&[x1, y1, x2, y2]| {
@@ -33,9 +33,8 @@ pub fn solve() {
             )
         })
         .filter(|&(a, b, c)| a + b == c || b + c == a || c + a == b)
-        .count();
-
-    println!("{result}");
+        .count()
+        .into()
 }
 
 fn convert_type(v: Vec<i32>) -> [i32; 4] {
